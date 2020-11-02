@@ -8,7 +8,7 @@ import {HashRouter} from "react-router-dom"
 
 ReactDOM.render(
   <HashRouter
-      basename="/car-sharing"
+      basename="/car-sharing/public"
       hashType={"slash"} >
     <Main/>
   </HashRouter>,
