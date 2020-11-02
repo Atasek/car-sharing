@@ -4,11 +4,14 @@ import Main from './Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
+import {HashRouter} from "react-router-dom"
 
 ReactDOM.render(
-  <React.StrictMode>
+  <HashRouter
+      basename="/car-sharing"
+      hashType={"slash"} >
     <Main/>
-  </React.StrictMode>,
+  </HashRouter>,
   document.getElementById('root')
 );
 
