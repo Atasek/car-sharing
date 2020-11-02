@@ -9,7 +9,7 @@ class CenterContent extends React.Component {
                 <p className="center-content__header-logo">Need for drive</p>
                 <div className="center-content__header-geo">
                     <IconGeolocation/>
-                    <a className="center-content__header-geo-loc" href="#">Ульяновск</a>
+                    <a className="center-content__header-geo-loc" href="/#">Ульяновск</a>
                 </div>
             </div>
             <div className="center-content__middle">
