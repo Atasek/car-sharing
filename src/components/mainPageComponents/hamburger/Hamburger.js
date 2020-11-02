@@ -14,10 +14,10 @@ class Hamburger extends React.Component {
             </label>
 
             <ul className="menu__list">
-                <li><a className="menu__item" href="#">ПАРКОВКА</a></li>
-                <li><a className="menu__item" href="#">СТРАХОВКА</a></li>
-                <li><a className="menu__item" href="#">БЕНЗИН</a></li>
-                <li><a className="menu__item" href="#">ОБСЛУЖИВАНИЕ</a></li>
+                <li><a className="menu__item" href="/#">ПАРКОВКА</a></li>
+                <li><a className="menu__item" href="/#">СТРАХОВКА</a></li>
+                <li><a className="menu__item" href="/#">БЕНЗИН</a></li>
+                <li><a className="menu__item" href="/#">ОБСЛУЖИВАНИЕ</a></li>
                 <li><a className="menu__item">
                     <div className="menu__social-networks">
                         <button className="menu__social-network-button"><IconTelegram/></button>
