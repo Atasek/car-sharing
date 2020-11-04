@@ -139,7 +139,7 @@ a:hover {
   list-style: none;
   padding: 220px 0 0 128px;
   background-color: #111518;
-  box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
   transition-duration: .25s;
   z-index: 3;
 }
@@ -151,7 +151,7 @@ a:hover {
   top: 0;
   left: -100%;
   margin-left: 900px;
-  width: 688px;
+  width: 901px;
   height: 100%;
   list-style: none;
   background: rgba(21, 27, 31, 0.81);
@@ -170,8 +170,8 @@ a:hover {
     background-color: transparent;
     text-decoration: none;
     outline: none !important;
-    border: 0px;
-    padding: 0px;
+    border: 0;
+    padding: 0;
 
     &:hover {
       border-radius: 50%;
