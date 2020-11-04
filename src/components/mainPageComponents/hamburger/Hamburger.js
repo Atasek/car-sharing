@@ -18,7 +18,7 @@ class Hamburger extends React.Component {
                 <li><a className="menu__item" href="/#">СТРАХОВКА</a></li>
                 <li><a className="menu__item" href="/#">БЕНЗИН</a></li>
                 <li><a className="menu__item" href="/#">ОБСЛУЖИВАНИЕ</a></li>
-                <li><a className="menu__item">
+                <li><a className="menu__item" href="/#">
                     <div className="menu__social-networks">
                         <button className="menu__social-network-button"><IconTelegram/></button>
                         <button className="menu__social-network-button"><IconFacebook/></button>
