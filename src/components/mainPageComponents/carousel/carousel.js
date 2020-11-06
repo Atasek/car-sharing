@@ -16,11 +16,11 @@ export default function CustomCarousel() {
                  src={FirstImageForSlide}
                  alt="First slide"
             />
-            <Carousel.Caption class="carousel-caption text-left">
+            <Carousel.Caption className="carousel-caption text-left">
                 <h3>Бесплатная парковка</h3>
                 <p>Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а
                     также в аэропортах.</p>
-                <button class="carousel__button green">Подробнее</button>
+                <button className="carousel__button green">Подробнее</button>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -28,10 +28,10 @@ export default function CustomCarousel() {
                  src={SecondImageForSlide}
                  alt="Third slide"
             />
-            <Carousel.Caption class="carousel-caption text-left">
+            <Carousel.Caption className="carousel-caption text-left">
                 <h3>Страховка</h3>
                 <p>Полная страховка автомобиля</p>
-                <button class="carousel__button blue">Подробнее</button>
+                <button className="carousel__button blue">Подробнее</button>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -39,10 +39,10 @@ export default function CustomCarousel() {
                  src={ThirdImageForSlide}
                  alt="Third slide"
             />
-            <Carousel.Caption class="carousel-caption text-left">
+            <Carousel.Caption className="carousel-caption text-left">
                 <h3>Бензин</h3>
                 <p>Полный бак на любой заправке города за наш счёт</p>
-                <button class="carousel__button pink">Подробнее</button>
+                <button className="carousel__button pink">Подробнее</button>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -50,10 +50,10 @@ export default function CustomCarousel() {
                  src={FourthImageForSlide}
                  alt="Fourth slide"
             />
-            <Carousel.Caption class="carousel-caption text-left">
+            <Carousel.Caption className="carousel-caption text-left">
                 <h3>Обслуживание</h3>
                 <p>Автомобиль проходит еженедельное ТО</p>
-                <button class="carousel__button violet">Подробнее</button>
+                <button className="carousel__button violet">Подробнее</button>
             </Carousel.Caption>
         </Carousel.Item>
     </Carousel>
