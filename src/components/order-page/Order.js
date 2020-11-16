@@ -6,8 +6,6 @@ import {STEPS, StepSwitcher} from "./step-switcher/StepSwitcher";
 import Breadcrumb from "./breadcrumb/Breadcrumb";
 import {Header} from "./header/Header";
 
-
-
 function Order() {
     const [step, setStep] = useState(STEPS.LOCATION);
     return (
