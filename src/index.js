@@ -4,15 +4,32 @@ import Main from './Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
-import {HashRouter} from "react-router-dom"
+import Order from "./components/order-page/Order";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
+import Model from "./components/order-page/order-steps/Model";
+import Location from "./components/order-page/order-steps/Location";
 
 ReactDOM.render(
-  <HashRouter
-      basename="/car-sharing/public"
-      hashType={"slash"} >
-    <Main/>
-  </HashRouter>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Router>
+            <div>
+                <Switch>
+                    <Route path="/order">
+                        <Order />
+                    </Route>
+                    <Route path="/">
+                        <Main />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
+
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

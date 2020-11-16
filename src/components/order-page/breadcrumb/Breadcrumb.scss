@@ -1,0 +1,42 @@
+
+.breadcrumb {
+  background-color: transparent;
+  height: 48px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  max-width: 1376px;
+  padding: 8px 64px;
+  margin: 0 auto;
+  width: 100%;
+
+  &-item{
+    outline: none;
+    text-decoration: none;
+    color: #0ec261;
+    font-family: Roboto-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &-item:hover{
+    outline: none;
+    text-decoration: none;
+    color: grey;
+  }
+  a{
+    color: #0ec261;
+  }
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  margin-right: 15px;
+  margin-left: 15px;
+  color: #6c757d;
+  content: url("Vector.svg");
+}
