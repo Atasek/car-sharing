@@ -1,0 +1,13 @@
+.description__item{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 26px;
+  &-line{
+    min-width: 96px;
+    flex-grow: 1;
+    flex-basis: auto;
+    border-bottom: 1px dotted #999;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}

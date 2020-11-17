@@ -3,6 +3,7 @@ import Model from "../order-steps/Model";
 import Location from "../order-steps/Location";
 import Addition from "../order-steps/Addition";
 import Summary from "../order-steps/Summary";
+import Geolocation from "../geolocation/Geolocation";
 
 export const STEPS = {
     LOCATION: "location",
@@ -14,8 +15,7 @@ export const STEPS = {
 export function StepSwitcher(props) {
     const step = props.step;
     if (step === STEPS.LOCATION) {
-        debugger;
-        return <Location/>;
+        return <Geolocation/>;
     }
     if (step === STEPS.MODEL) {
         return <Model/>;

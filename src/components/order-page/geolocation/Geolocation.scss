@@ -46,19 +46,14 @@
       border-bottom: 1px solid #999;
       outline: none;
     }
+    &-cancel{
+      border: none;
+      position: absolute;
+      outline: none;
+      cursor: pointer;
+      background-color: inherit;
+      bottom: 2px;
+    }
   }
 }
 
-.description__item{
-  display: flex;
-  justify-content: space-between;
-  margin-top: 26px;
-  &-line{
-    min-width: 96px;
-    flex-grow: 1;
-    flex-basis: auto;
-    border-bottom: 1px dotted #999;
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-}

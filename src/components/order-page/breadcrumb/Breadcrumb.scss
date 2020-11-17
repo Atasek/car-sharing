@@ -11,9 +11,23 @@
   margin: 0 auto;
   width: 100%;
 
-  &-item{
+  &-item {
+    background-color: inherit;
+  }
+
+  &-item:disabled {
+    color: #999;
+    cursor: default;
     outline: none;
     text-decoration: none;
+  }
+
+  &-button {
+    background-color: transparent;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
     color: #0ec261;
     font-family: Roboto-Bold;
     font-style: normal;
@@ -21,12 +35,8 @@
     font-size: 14px;
     line-height: 16px;
   }
-  &-item:hover{
-    outline: none;
-    text-decoration: none;
-    color: grey;
-  }
-  a{
+
+  a {
     color: #0ec261;
   }
 }
@@ -40,3 +50,4 @@
   color: #6c757d;
   content: url("Vector.svg");
 }
+
