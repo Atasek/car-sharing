@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Geolocation.scss"
 import {ReactComponent as MapIcon} from "../../../../img/Rectangle.svg";
 import {ReactComponent as InputCancelIcon} from "../../../../img/CancelVector.svg";
-import Breadcrumb from "../../breadcrumb/Breadcrumb";
 import Location from "../Location";
-import {STEPS, StepSwitcher} from "../../step-switcher/StepSwitcher";
+
 
 export default function Geolocation(props) {
 
