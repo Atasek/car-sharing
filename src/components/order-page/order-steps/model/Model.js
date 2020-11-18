@@ -1,5 +1,6 @@
 import React from "react";
 import "./Model.scss"
+import ApiCar from "../../RestApi";
 
 export default function Model() {
 
@@ -13,7 +14,7 @@ export default function Model() {
             <label htmlFor="contactChoice1">Премиум</label>
         </div>
         <div className="catalog">
-
+            <ApiCar/>
         </div>
     </div>
         }

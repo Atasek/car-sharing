@@ -14,10 +14,10 @@ import {
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router basename="/car-sharing" >
+        <Router >
             <div>
                 <Switch>
-                    <Route path="/order">
+                    <Route path="/car-sharing/order">
                         <Order />
                     </Route>
                     <Route path="/">
