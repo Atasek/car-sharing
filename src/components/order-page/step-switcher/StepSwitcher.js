@@ -1,6 +1,5 @@
 import React from "react";
 import Model from "../order-steps/model/Model";
-import Location from "../order-steps/Location";
 import Addition from "../order-steps/Addition";
 import Summary from "../order-steps/Summary";
 import Geolocation from "../order-steps/geolocation/Geolocation";
