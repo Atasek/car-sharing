@@ -1,9 +1,9 @@
 import React from "react";
-import Model from "../order-steps/Model";
+import Model from "../order-steps/model/Model";
 import Location from "../order-steps/Location";
 import Addition from "../order-steps/Addition";
 import Summary from "../order-steps/Summary";
-import Geolocation from "../geolocation/Geolocation";
+import Geolocation from "../order-steps/geolocation/Geolocation";
 
 export const STEPS = {
     LOCATION: "location",

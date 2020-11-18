@@ -10,12 +10,11 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import Model from "./components/order-page/order-steps/Model";
-import Location from "./components/order-page/order-steps/Location";
+
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router>
+        <Router basename="/car-sharing" >
             <div>
                 <Switch>
                     <Route path="/order">

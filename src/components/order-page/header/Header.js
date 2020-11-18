@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './Header.scss'
 import {ReactComponent as IconGeolocation} from "../../../img/geolocation.svg";
 import Breadcrumb from "../breadcrumb/Breadcrumb";
-import Geolocation from "../geolocation/Geolocation";
+import Geolocation from "../order-steps/geolocation/Geolocation";
 import {STEPS, StepSwitcher} from "../step-switcher/StepSwitcher";
 
 export default function Header(props) {
