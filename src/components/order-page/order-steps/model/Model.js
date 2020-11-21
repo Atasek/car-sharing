@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Model.scss"
-import ApiCar from "../../RestApi";
+import {getCars} from "../../../../api/order";
 
 export default function Model() {
+    const [cars, setCars] = useState([]);
+
+    useEffect(async () => {
+        const result = await getCars();
+        setCars(result.data);
+    });
 
     return <div className='model'>
         <div className="radio-item">
@@ -14,7 +20,6 @@ export default function Model() {
             <label htmlFor="contactChoice1">Премиум</label>
         </div>
         <div className="catalog">
-            <ApiCar/>
         </div>
     </div>
         }

@@ -14,8 +14,8 @@ import {
 ReactDOM.render(
     <React.StrictMode>
         <Router >
-                    <Route path="/order" component={Order}/>
-                    <Route path="/" component={Main}/>
+                    <Route path="/car-sharing/order" component={Order}/>
+                    <Route exact path="/car-sharing" component={Main}/>
         </Router>
 
     </React.StrictMode>,

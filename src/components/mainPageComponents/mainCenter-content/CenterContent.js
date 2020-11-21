@@ -18,7 +18,7 @@ class CenterContent extends React.Component {
                     <h1 className="center-content__middle-el1 ">Каршеринг</h1>
                     <h2 className="center-content__middle-el2 ">Need for drive</h2>
                     <p className="center-content__middle-el3 ">Поминутная аренда авто твоего города</p>
-                </div><Link to="/order"><button className="middle__button">Забронировать</button></Link>
+                </div><Link to="/car-sharing/order"><button className="middle__button">Забронировать</button></Link>
             </div>
             <div className="center-content__footer">
                 <p className="center-content__footer-license ">© 2016-2019 «Need for drive»</p>
