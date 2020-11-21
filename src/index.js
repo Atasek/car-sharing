@@ -7,7 +7,6 @@ import './fonts/fonts.scss';
 import Order from "./components/order-page/Order";
 import {
     BrowserRouter as Router,
-    Switch,
     Route
 } from "react-router-dom";
 
@@ -15,16 +14,8 @@ import {
 ReactDOM.render(
     <React.StrictMode>
         <Router >
-            <div>
-                <Switch>
-                    <Route path="/order">
-                        <Order/>
-                    </Route>
-                    <Route exact path="/">
-                        <Main/>
-                    </Route>
-                </Switch>
-            </div>
+                    <Route path="/order" component={Order}/>
+                    <Route path="/" component={Main}/>
         </Router>
 
     </React.StrictMode>,

@@ -7,7 +7,7 @@ import React from "react";
 
 export default function CustomCarousel() {
     return <Carousel
-        indicators="true"
+        indicators={true}
         prevIcon={<span aria-hidden="true" className="carousel__icon carousel__icon_left-arrow"/>}
         nextIcon={<span aria-hidden="true" className="carousel__icon carousel__icon_right-arrow"/>}
     >
