@@ -17,11 +17,11 @@ ReactDOM.render(
         <Router >
             <div>
                 <Switch>
-                    <Route path="/car-sharing/order">
-                        <Order />
+                    <Route path="/order">
+                        <Order/>
                     </Route>
                     <Route path="/">
-                        <Main />
+                        <Main/>
                     </Route>
                 </Switch>
             </div>
