@@ -18,7 +18,7 @@ class CenterContent extends React.Component {
                     <h2 className="center-content__middle-el2 ">Need for drive</h2>
                     <p className="center-content__middle-el3 ">Поминутная аренда авто твоего города</p>
                 </div>
-                <form action="/car-sharing/order">
+                <form action="/order">
                 <button className="middle__button" type="submit">Забронировать</button>
                 </form>
             </div>

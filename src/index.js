@@ -20,7 +20,7 @@ ReactDOM.render(
                     <Route path="/order">
                         <Order/>
                     </Route>
-                    <Route path="/">
+                    <Route exact path="/">
                         <Main/>
                     </Route>
                 </Switch>
