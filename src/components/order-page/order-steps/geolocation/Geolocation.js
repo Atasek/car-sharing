@@ -5,6 +5,8 @@ import {ReactComponent as InputCancelIcon} from "../../../../img/CancelVector.sv
 import Location from "../Location";
 
 
+
+
 export default function Geolocation(props) {
 
     return <div className='geolocation'>
@@ -29,7 +31,7 @@ export default function Geolocation(props) {
                     <div className='pick-point__map'>
                         <div className='pick-point__map-choice'>Выбрать на карте:</div>
                         <div className='img-map'>
-                         <MapIcon/>
+                         <setPoints/>
                         </div>
                     </div>
                 </div>
