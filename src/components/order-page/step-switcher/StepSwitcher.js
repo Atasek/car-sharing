@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import Model from "../order-steps/model/Model";
-import Addition from "../order-steps/Addition";
+import Addition from "../order-steps/addition/Addition";
 import Summary from "../order-steps/Summary";
 import Geolocation from "../order-steps/geolocation/Geolocation";
 
@@ -12,17 +12,21 @@ export const STEPS = {
 }
 
 export function StepSwitcher(props) {
-    const step = props.step;
+    const [step, setStep] = useState(STEPS.LOCATION);
+    function changeStep(step) {
+        setStep(step);
+        props.changeStep(step);
+    }
     if (step === STEPS.LOCATION) {
-        return <Geolocation/>;
+        return <Geolocation changeStep={(step) => changeStep(step)}/>;
     }
     if (step === STEPS.MODEL) {
-        return <Model/>;
+        return <Model changeStep={(step) => changeStep(step)}/>;
     }
     if (step === STEPS.ADDITION) {
-        return <Addition/>;
+        return <Addition changeStep={(step) => changeStep(step)}/>;
     }
     if (step === STEPS.SUMMARY) {
-        return <Summary/>;
+        return <Summary changeStep={(step) => changeStep(step)}/>;
     }
 }

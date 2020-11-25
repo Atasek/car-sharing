@@ -1,7 +1,8 @@
 import React from "react";
 import "./Location.scss"
+import {STEPS} from "../step-switcher/StepSwitcher";
 
-export default function Location() {
+export default function Location(props) {
     return <div className='order__description'>
         <div className='description__Your-order'>Ваш заказ</div>
         <div className='description__item'>
@@ -34,6 +35,6 @@ export default function Location() {
             <div className='description__item-line'></div>
             <div className='description__item-status'></div>
         </div>
-        <button className='description__button'>Выбрать модель</button>
+        <button className='description__button' onClick={() => props.changeStep(STEPS.MODEL)}>Выбрать модель</button>
     </div>
 }

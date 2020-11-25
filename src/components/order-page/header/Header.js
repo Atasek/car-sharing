@@ -17,8 +17,8 @@ export default function Header(props) {
                 </div>
             </div>
             <div className='order__breadcrumb'>
-                <Breadcrumb changeStep={(step) => setStep(step)}/>
+                <Breadcrumb step={step}/>
             </div>
-            <StepSwitcher step={step}/>
+            <StepSwitcher changeStep={(step) => setStep(step)}/>
         </div>;
 }

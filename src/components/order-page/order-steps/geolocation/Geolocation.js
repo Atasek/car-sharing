@@ -37,7 +37,7 @@ export default function Geolocation(props) {
                 </div>
             </div>
         <div className='order__description'>
-            <Location changeStep={(step) => props.changeStep(step)} />
+            <Location changeStep={(step) => props.changeStep(step)}/>
         </div>
     </div>;
     }
