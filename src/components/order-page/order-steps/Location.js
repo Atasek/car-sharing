@@ -3,7 +3,7 @@ import "./Location.scss"
 import {STEPS} from "../step-switcher/StepSwitcher";
 
 export default function Location(props) {
-    return <div className='order__description'>
+    return <div className='description'>
         <div className='description__Your-order'>Ваш заказ</div>
         <div className='description__item'>
             <div className='description__item-point'>Пункт выдачи</div>

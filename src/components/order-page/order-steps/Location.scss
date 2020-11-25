@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 26px;
+
   &-line{
     min-width: 96px;
     flex-grow: 1;
@@ -11,7 +12,31 @@
     margin-right: 12px;
   }
 }
+.description__button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  text-decoration: none;
+  padding: 12px;
+  background: linear-gradient(90deg,#0ec261 2.61%,#039f67 112.6%);
+  background-blend-mode: darken;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
 
 .order__description{
   border-left: 1px solid #eee;
+}
+.description{
+  display: flex;
+  flex-direction: column;
+  padding-left: 32px;
+  padding-top: 32px;
 }

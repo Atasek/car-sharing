@@ -6,16 +6,15 @@
 
 .radio-item {
   display: flex;
-  align-items: center;
   margin-right: 15px;
 }
 
-
-radio-item__label {
+.radio-item__label {
+  margin-left: 10px;
+  margin-right: 20px;
   display: flex;
-  align-items: center;
   cursor: pointer;
-  font-style: normal;
+  font-family: Roboto-Light;
   font-weight: 300;
   font-size: 14px;
   line-height: 16px;
