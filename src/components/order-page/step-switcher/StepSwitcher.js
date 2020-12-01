@@ -17,16 +17,19 @@ export function StepSwitcher(props) {
         setStep(step);
         props.changeStep(step);
     }
+    function confirmOrder() {
+        // TODO
+    }
     if (step === STEPS.LOCATION) {
-        return <Geolocation changeStep={(step) => changeStep(step)}/>;
+        return <Geolocation changeStep={() => changeStep(STEPS.MODEL)}/>;
     }
     if (step === STEPS.MODEL) {
-        return <Model changeStep={(step) => changeStep(step)}/>;
+        return <Model changeStep={() => changeStep(STEPS.ADDITION)}/>;
     }
     if (step === STEPS.ADDITION) {
-        return <Addition changeStep={(step) => changeStep(step)}/>;
+        return <Addition changeStep={() => changeStep(STEPS.SUMMARY)}/>;
     }
     if (step === STEPS.SUMMARY) {
-        return <Summary changeStep={(step) => changeStep(step)}/>;
+        return <Summary confirmOrder={() => confirmOrder()}/>;
     }
 }

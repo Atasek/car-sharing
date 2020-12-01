@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import "./Model.scss"
 import {getCars} from "../../../../api/order";
-import Location from "../Location";
+import OrderInfo from "../OrderInfo";
+import {STEPS} from "../../step-switcher/StepSwitcher";
 
 
-export default function Model() {
+export default function Model(props) {
     const [originCars, setOriginCars] = useState([]);
     const [cars, setCars] = useState([]);
     cars.onload=()=> {
@@ -61,7 +62,7 @@ export default function Model() {
             </div>
         </div>
         <div className='order__description'>
-            <Location/>
+            <OrderInfo step={STEPS.MODEL} changeStep={() => props.changeStep()}/>
         </div>
     </div>
 }

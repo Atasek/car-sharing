@@ -8,3 +8,20 @@ export async function getCars() {
 
     return await response.json();
 }
+
+export async function getCities() {
+    const url = `${BASE_URL}city`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+export async function getDistributionPoints() {
+    const url = `${BASE_URL}point`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}

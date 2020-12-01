@@ -31,6 +31,7 @@ async function getCenter(changeCityPoints) {
         console.log(error);
     }
 }
+/*
 
 export async function setPoints(points, changeCity, setPointsOfCity, setCenter) {
     const pointsOfThisCity = points.data.filter(item => item.cityId.name === changeCity.name);
@@ -51,4 +52,4 @@ export async function setPoints(points, changeCity, setPointsOfCity, setCenter) 
 
     setPointsOfCity(arr);
     setCenter(centerOfMap);
-}
+}*/

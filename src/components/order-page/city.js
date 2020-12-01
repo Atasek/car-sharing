@@ -1,4 +1,4 @@
-/*import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Model.scss"
 import {getCity} from "../../../../api/order";
 
@@ -12,4 +12,4 @@ export default function Model() {
     }, []);
 
     <div>ul </div>
-}*/
+}
