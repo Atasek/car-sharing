@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./Geolocation.scss"
 import {ReactComponent as InputCancelIcon} from "../../../../img/CancelVector.svg";
 import OrderInfo from "../OrderInfo";
 import {STEPS} from "../../step-switcher/StepSwitcher";
 import {getCities} from "../../../../api/order";
-import Select from "react-select";
 import AsyncSelect from 'react-select/async';
 
 
@@ -12,15 +11,6 @@ export default function Geolocation(props) {
     const [city, setCity] = useState('');
     const [distributionPoint, setDistributionPoint] = useState('');
     const [cities, setCities] = useState(null);
-
-    useEffect(async () => {
-        const responseCities = await getCities();
-        const cities = responseCities.data.map((city) => ({
-            value: city.id,
-            label: city.name
-        }));
-       setCities(cities.data);
-    }, []);
 
     async function getCitiesForSelect() {
         const responseCities = await getCities();

@@ -13,10 +13,14 @@ export default function Model(props) {
     };
     const [sortType, setSortType] = useState('Все модели');
 
-    useEffect(async () => {
-        const result = await getCars();
-        setOriginCars(result.data);
-        setCars(originCars);
+    useEffect(() => {
+        async function fetchCars() {
+            const result = await getCars();
+            setOriginCars(result.data);
+            setCars(originCars);
+        }
+        debugger;
+        fetchCars();
     }, []);
 
     function sortCars(type) {
@@ -56,7 +60,9 @@ export default function Model(props) {
                             <div className="catalog__car-price"> {car.priceMin} - {car.priceMax} </div>
                         </div>
                         <img className="img-car"
-                             src={`http://api-factory.simbirsoft1.com${car.thumbnail.path}`}/>
+                             src={`http://api-factory.simbirsoft1.com${car.thumbnail.path}`}
+                             alt={car.name}
+                        />
                     </div>)}
                 </div>
             </div>
@@ -66,9 +72,3 @@ export default function Model(props) {
         </div>
     </div>
 }
-
-/*default function AllCars(){
-    {cars.map((car) =><li key={car.id}><img src={`http://api-factory.simbirsoft1.com${car.thumbnail.path}`}/>{car.name}</li>)}
-}
-
-*/
