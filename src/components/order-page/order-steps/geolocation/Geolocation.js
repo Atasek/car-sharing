@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import "./Geolocation.scss"
 import {ReactComponent as InputCancelIcon} from "../../../../img/CancelVector.svg";
-import OrderInfo from "../OrderInfo";
-import {STEPS} from "../../step-switcher/StepSwitcher";
 import {getCities} from "../../../../api/order";
 import AsyncSelect from 'react-select/async';
 
@@ -58,9 +56,6 @@ export default function Geolocation(props) {
                     </div>
                 </div>
             </div>
-        </div>
-        <div className='order__description'>
-            <OrderInfo step={STEPS.LOCATION} changeStep={() => props.changeStep()}/>
         </div>
     </div>;
 }

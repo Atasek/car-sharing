@@ -1,11 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import './Header.scss'
 import {ReactComponent as IconGeolocation} from "../../../img/geolocation.svg";
-import Breadcrumb from "../breadcrumb/Breadcrumb";
-import {STEPS, StepSwitcher} from "../step-switcher/StepSwitcher";
 
-export default function Header(props) {
-    const [step, setStep] = useState(STEPS.LOCATION);
+export default function Header() {
         return <div className='order'>
             <div className='order__header'>
                 <div className='main-header'>
@@ -16,9 +13,5 @@ export default function Header(props) {
                     </div>
                 </div>
             </div>
-            <div className='order__breadcrumb'>
-                <Breadcrumb step={step}/>
-            </div>
-            <StepSwitcher changeStep={(step) => setStep(step)}/>
         </div>;
 }

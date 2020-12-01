@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Location.scss"
 import {STEPS} from "../step-switcher/StepSwitcher";
+import OrderInfoButton from "../components/order-info-button/OrderInfoButton";
 
 export default function OrderInfo(props) {
+    const [step, nextStep] = useState(STEPS.LOCATION);
+
+    function changeStep() {
+        // TODO: props.nextStep(step) or props.confirmOrder()
+    }
     return <div className='description'>
         <div className='description__Your-order'>Ваш заказ:</div>
         <div className='description__item'>
@@ -35,12 +41,14 @@ export default function OrderInfo(props) {
             <div className='description__item-line'></div>
             <div className='description__item-status'></div>
         </div>
-        <button className='description__button' onClick={() => props.step === STEPS.SUMMARY ? props.confirmOrder() : props.changeStep()}>
-            {(props.step === STEPS.LOCATION && 'Выбрать модель') ||
-            (props.step === STEPS.MODEL && 'Дополнительно') ||
-            (props.step === STEPS.ADDITION && 'Итого') ||
-            (props.step === STEPS.SUMMARY && 'Заказать')
-            }
-        </button>
+        <div className='description__item'>
+            <div className='description__item-point'>Цена</div>
+            <div className='description__item-line'></div>
+            <div className='description__item-status'></div>
+        </div>
+        <OrderInfoButton
+            step={step}
+            nextStep={() => changeStep()}
+        />
     </div>
 }
