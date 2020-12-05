@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./Model.scss"
 import {getCars} from "../../../../api/order";
-import OrderInfo from "../OrderInfo";
-import {STEPS} from "../../step-switcher/StepSwitcher";
 
 
 export default function Model(props) {
@@ -19,7 +17,6 @@ export default function Model(props) {
             setOriginCars(result.data);
             setCars(originCars);
         }
-        debugger;
         fetchCars();
     }, []);
 
@@ -66,9 +63,6 @@ export default function Model(props) {
                     </div>)}
                 </div>
             </div>
-        </div>
-        <div className='order__description'>
-            <OrderInfo step={STEPS.MODEL} changeStep={() => props.changeStep()}/>
         </div>
     </div>
 }

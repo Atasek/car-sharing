@@ -1,0 +1,72 @@
+import React, {useState} from "react";
+import "../order-steps/Location.scss"
+import {STEPS} from "../step-switcher/StepSwitcher";
+import OrderInfoButton from "../components/order-info-button/OrderInfoButton";
+import './OrderInfo.scss';
+
+export default function OrderInfo(props) {
+    const [step, nextStep] = useState(STEPS.LOCATION);
+    const [isOrderConfirmed, setOrderConfirmed] = useState(false);
+
+    function changeStep() {
+        if (step === STEPS.LOCATION) {
+            nextStep(STEPS.MODEL);
+            props.nextStep(STEPS.MODEL);
+            return;
+        }
+        if (step === STEPS.MODEL) {
+            nextStep(STEPS.ADDITION);
+            props.nextStep(STEPS.ADDITION);
+            return;
+        }
+        if (step === STEPS.ADDITION) {
+            nextStep(STEPS.SUMMARY);
+            props.nextStep(STEPS.SUMMARY);
+            return;
+        }
+        if (step === STEPS.SUMMARY) {
+            // TODO
+            return;
+        }
+    }
+    return <div className='order-info'>
+        <span className='order-info__main-title'>Ваш заказ:</span>
+        {props.order.city && props.order.distributionPoint && <div className='order-info__row'>
+            <div className='order-info__title'>Пункт выдачи</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>{props.order.city && props.order.city.label}, {props.order.distributionPoint && props.order.distributionPoint.address}</div>
+        </div>}
+      {/*  <div className='order-info__row'>
+            <div className='order-info__title'>Модель</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>Hyndai, i30 N</div>
+        </div>
+        <div className='order-info__row'>
+            <div className='order-info__title'>Цвет</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>Голубой</div>
+        </div>
+        <div className='order-info__row'>
+            <div className='order-info__title'>Длительность аренды</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>1д&nbsp;2ч</div>
+        </div>
+        <div className='order-info__row'>
+            <div className='order-info__title'>Тариф</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>На сутки</div>
+        </div>
+        <div className='order-info__row'>
+            <div className='order-info__title'>Полный бак</div>
+            <div className='order-info__line'></div>
+            <div className='order-info__value'>Да</div>
+        </div>
+        <div className="order-info__price"><span className="order-info__price-title">Цена: </span><span>от {322} до {322} ₽</span></div>*/}
+        <OrderInfoButton
+            step={step}
+            isOrderConfirmed={isOrderConfirmed}
+            nextStep={() => changeStep()}
+            disabled={!props.order.city || !props.order.distributionPoint}
+        />
+    </div>
+}

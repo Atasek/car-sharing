@@ -29,14 +29,16 @@
   &__map{
     margin-top: 45px;
   }
-  &__item{
+  &__item {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     width: 325px;
     align-items: center;
-    margin-bottom: 13px;
     position: relative;
+    &_first {
+      margin: 0 0 13px 0;
+    }
     &-type{
       margin-right: 9px;
     }
@@ -54,6 +56,9 @@
       background-color: inherit;
       bottom: 2px;
     }
+  }
+  &__map-choice {
+    margin: 0 0 13px 0;
   }
 }
 

@@ -3,27 +3,31 @@ import './Order.scss';
 import LeftSidebar from "../mainPageComponents/left-sidebar/LeftSidebar";
 import Header from "./header/Header";
 import {STEPS, StepSwitcher} from "./step-switcher/StepSwitcher";
-import OrderInfo from "./order-steps/OrderInfo";
-import Breadcrumb from "./breadcrumb/Breadcrumb";
+import OrderInfo from "./order-info/OrderInfo";
+import OrderStatus from "./breadcrumb/Breadcrumb";
 
 function Order() {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const [order, setOrder] = useState({});
+    const [orderNumber, setOrderNumber] = useState(null);
 
     async function confirmOrder() {
         // TODO: call modal and send request
+        setOrderNumber(null); // TODO: GET /db/orderStatus/{data_id}
     }
 
     return (
         <div className="order">
             <LeftSidebar/>
-            <div class="order__main">
+            <div className="order__main">
                 <Header/>
-                <Breadcrumb step={step}/>
+                <OrderStatus orderNumber={orderNumber} step={step}/>
                 <div className="order__content">
                     <StepSwitcher
                         step={step}
-                        handleOrder={(order) => setOrder(order)}
+                        handleOrder={(order) => {
+                            setOrder(order);
+                        }}
                     />
                     <OrderInfo
                         order={order}

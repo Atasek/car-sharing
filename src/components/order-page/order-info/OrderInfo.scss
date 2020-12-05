@@ -1,0 +1,51 @@
+@import 'src/styles/colors';
+@import 'src/fonts/fonts';
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 64px 0 32px;
+  border-left: 1px solid $gray-light;
+  min-width: 384px;
+  &__main-title {
+    font-family: Roboto-Bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: right;
+    margin: 0 0 26px;
+  }
+  &__title {
+    white-space: nowrap;
+  }
+  &__price-title {
+    font-family: Roboto-Bold;
+  }
+  &__price {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 16px 0 32px 0;
+  }
+  &__line {
+    min-width: 50px;
+    flex-grow: 1;
+    flex-basis: auto;
+    border-bottom: 1px dotted $gray;
+    margin-left: 12px;
+    margin-right: 12px;
+    color: $gray;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 0 16px 0;
+    text-align: right;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &__value {
+    max-width: 101px;
+    color: $gray;
+  }
+}

@@ -1,26 +1,8 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.order {
-
-  &__header {
-    padding: 32px 64px;
-  }
-
-  &__breadcrumb {
-    height: 48px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-  }
-}
-
-.main-header {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  margin: 32px 64px 32px 64px;
   &__logo {
     font-family: Roboto-Bold;
     font-style: normal;
@@ -30,8 +12,7 @@
     color: #0ec261;
     text-decoration: none;
   }
-
-  &__geo {
+  &__geolocation {
     font-family: Roboto-Light;
     font-style: normal;
     font-weight: 400;
@@ -44,14 +25,11 @@
     width: 94px;
     height: 18px;
     cursor: pointer;
-
-    &-loc {
-      color: #999999;
-      outline: none !important;
-      text-decoration: none;
-    }
-
   }
-
+  &__city {
+    color: #999999;
+    outline: none !important;
+    text-decoration: none;
+  }
 }
 
