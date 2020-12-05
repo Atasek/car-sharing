@@ -64,7 +64,7 @@ export default function Geolocation(props) {
                         isClearable="true"
                         placeholder='Выбрать...'
                         onChange={(city) => changeCity(city)}
-                        isDisabled={!cities}
+                        isDisabled={!cities && !distributionPoints}
                         options={cities}
                         value={city}
                     />

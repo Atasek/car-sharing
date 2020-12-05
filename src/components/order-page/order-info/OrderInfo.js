@@ -32,16 +32,16 @@ export default function OrderInfo(props) {
     return <div className='order-info'>
         <span className='order-info__main-title'>Ваш заказ:</span>
         {props.order.city && props.order.distributionPoint && <div className='order-info__row'>
-            <div className='order-info__title'>Пункт выдачи</div>
-            <div className='order-info__line'></div>
-            <div className='order-info__value'>{props.order.city && props.order.city.label}, {props.order.distributionPoint && props.order.distributionPoint.address}</div>
+            <span className='order-info__title'>Пункт выдачи</span>
+            <div className='order-info__line'/>
+            <span className='order-info__value'>{props.order.city.label}, {props.order.distributionPoint.address}</span>
         </div>}
-      {/*  <div className='order-info__row'>
-            <div className='order-info__title'>Модель</div>
-            <div className='order-info__line'></div>
-            <div className='order-info__value'>Hyndai, i30 N</div>
-        </div>
-        <div className='order-info__row'>
+        {props.order.car && <div className='order-info__row'>
+            <span className='order-info__title'>Модель</span>
+            <div className='order-info__line'/>
+            <span className='order-info__value'>{props.order.car.name}</span>
+        </div>}
+        {/*  <div className='order-info__row'>
             <div className='order-info__title'>Цвет</div>
             <div className='order-info__line'></div>
             <div className='order-info__value'>Голубой</div>
@@ -66,7 +66,7 @@ export default function OrderInfo(props) {
             step={step}
             isOrderConfirmed={isOrderConfirmed}
             nextStep={() => changeStep()}
-            disabled={!props.order.city || !props.order.distributionPoint}
+            disabled={(step === STEPS.LOCATION && !props.order.city || !props.order.distributionPoint) || (step === STEPS.MODEL && !props.order.car)}
         />
     </div>
 }

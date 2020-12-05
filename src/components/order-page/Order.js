@@ -25,8 +25,8 @@ function Order() {
                 <div className="order__content">
                     <StepSwitcher
                         step={step}
-                        handleOrder={(order) => {
-                            setOrder(order);
+                        handleOrder={(newOrder) => {
+                            setOrder({...order, ...newOrder});
                         }}
                     />
                     <OrderInfo
