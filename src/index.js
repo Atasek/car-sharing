@@ -4,15 +4,22 @@ import Main from './Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
-import {HashRouter} from "react-router-dom"
+import Order from "./components/order-page/Order";
+import {
+    BrowserRouter as Router,
+    Route
+} from "react-router-dom";
+
 
 ReactDOM.render(
-  <HashRouter
-      basename="/car-sharing/public"
-      hashType={"slash"} >
-    <Main/>
-  </HashRouter>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Router >
+                    <Route path="/car-sharing/order" component={Order}/>
+                    <Route exact path="/car-sharing" component={Main}/>
+        </Router>
+
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,0 +1,42 @@
+@import 'src/styles/colors';
+
+.order-status {
+  border-top: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  display: flex;
+  align-items: center;
+  padding: 8px 64px 7px 64px;
+}
+
+.order-number {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.breadcrumbs {
+  &__item {
+    background-color: transparent;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    font-family: Roboto-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    &_active {
+      color: $main-accent;
+    }
+    &_passed {
+      color: $black;
+    }
+    &_following {
+      color: $gray;
+    }
+  }
+  &__separator {
+    margin: 0 16px 0 16px;
+  }
+}
+
