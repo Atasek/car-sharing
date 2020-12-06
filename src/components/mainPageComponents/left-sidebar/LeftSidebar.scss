@@ -1,22 +1,4 @@
 
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .sidebar {
-    background-color: transparent !important;
-    position: absolute !important;
-    height: 100vh !important;
-  }
-
-  .sidebar__button-hidden{
-    visibility: hidden!important;
-  }
-  #menu__toggle:checked ~ .sidebar__button{
-    visibility: visible!important;
-    display: block!important;
-    z-index: 4!important;
-  }
-}
-
-
 .sidebar {
   min-width: 64px;
   max-width: 80px;
@@ -53,3 +35,21 @@
     }
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .sidebar {
+    background-color: transparent;
+    position: absolute ;
+    height: 100vh;
+  }
+
+  .sidebar__button-hidden{
+    visibility: hidden;
+  }
+  #menu__toggle:checked ~ .sidebar__button{
+    visibility: visible;
+    display: block;
+    z-index: 4;
+  }
+}
+
