@@ -1,8 +1,8 @@
 import {Carousel} from "react-bootstrap";
-import FirstImageForSlide from "../../../img/slide11.png";
-import SecondImageForSlide from "../../../img/slide2.png";
-import ThirdImageForSlide from "../../../img/slide3.png";
-import FourthImageForSlide from "../../../img/slide4.png";
+import firstImage from "../../../img/slide11.png";
+import secondImage from "../../../img/slide2.png";
+import thirdImage from "../../../img/slide3.png";
+import fourthImage from "../../../img/slide4.png";
 import React from "react";
 
 export default function CustomCarousel() {
@@ -13,7 +13,7 @@ export default function CustomCarousel() {
     >
         <Carousel.Item>
             <img className="carousel__img"
-                 src={FirstImageForSlide}
+                 src={firstImage}
                  alt="First slide"
             />
             <Carousel.Caption className="carousel-caption text-left">
@@ -25,7 +25,7 @@ export default function CustomCarousel() {
         </Carousel.Item>
         <Carousel.Item>
             <img className="carousel__img"
-                 src={SecondImageForSlide}
+                 src={secondImage}
                  alt="Third slide"
             />
             <Carousel.Caption className="carousel-caption text-left">
@@ -36,7 +36,7 @@ export default function CustomCarousel() {
         </Carousel.Item>
         <Carousel.Item>
             <img className="carousel__img"
-                 src={ThirdImageForSlide}
+                 src={thirdImage}
                  alt="Third slide"
             />
             <Carousel.Caption className="carousel-caption text-left">
@@ -47,7 +47,7 @@ export default function CustomCarousel() {
         </Carousel.Item>
         <Carousel.Item>
             <img className="carousel__img"
-                 src={FourthImageForSlide}
+                 src={fourthImage}
                  alt="Fourth slide"
             />
             <Carousel.Caption className="carousel-caption text-left">
