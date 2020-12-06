@@ -106,7 +106,7 @@
 
 .carousel-control-prev:hover,
 .carousel-control-prev:active {
-  transition: opacity .0s ease !important;
+  transition: opacity .0s ease !important; //important чтобы перебить библиотечные стили карусели
   opacity: 0.2 !important;
   background: #0EC261 !important;
 }
