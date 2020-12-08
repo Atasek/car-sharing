@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "./Geolocation.scss"
-import {getCities, getDistributionPoints} from "../../../../api/order";
+import {
+    getCitiesForSelect,
+    getDistributionPointsForSelect
+} from "../../../../api/order";
 import MapStub from "../../../../img/map-stub.png";
 import CustomSelect from "../../../common/select/Select";
 
@@ -13,30 +16,14 @@ export default function Geolocation(props) {
     const [originDistributionPoints, setOriginDistributionPoints] = useState(null);
 
     useEffect(() => {
-        (async () => {
-            setCities(await getCitiesForSelect());
-            const distributionPoints = await getDistributionPointsForSelect();
-            setOriginDistributionPoints(distributionPoints);
-            setDistributionPoints(distributionPoints);
-        })()
+        initCitiesAndPoints();
     }, [])
 
-    async function getCitiesForSelect() {
-        const responseCities = await getCities();
-        return responseCities.data.map((city) => ({
-            value: city.id,
-            label: city.name
-        }));
-    }
-
-    async function getDistributionPointsForSelect() {
-        const responseDistributionPoints = await getDistributionPoints();
-        return responseDistributionPoints.data.map((distributionPoint) => ({
-            value: distributionPoint.id,
-            label: distributionPoint.name,
-            cityId: distributionPoint.cityId.id,
-            address: distributionPoint.address,
-        }));
+    async function initCitiesAndPoints() {
+        setCities(await getCitiesForSelect());
+        const distributionPoints = await getDistributionPointsForSelect();
+        setOriginDistributionPoints(distributionPoints);
+        setDistributionPoints(distributionPoints);
     }
 
     function changeCity(city) {

@@ -18,13 +18,13 @@ export function StepSwitcher(props) {
     }
 
     if (props.step === STEPS.LOCATION) {
-        return <Geolocation changeOrder={(order) => handleOrder(order)}/>;
+        return <Geolocation changeOrder={handleOrder}/>;
     }
     if (props.step === STEPS.MODEL) {
-        return <Model changeOrder={(order) => handleOrder(order)}/>;
+        return <Model changeOrder={handleOrder}/>;
     }
     if (props.step === STEPS.ADDITION) {
-        return <Addition carColors={props.order.car.colors} changeOrder={(order) => handleOrder(order)}/>;
+        return <Addition carColors={props.order.car.colors} changeOrder={handleOrder}/>;
     }
     if (props.step === STEPS.SUMMARY) {
         return <Summary order={props.order}/>;

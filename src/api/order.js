@@ -63,3 +63,21 @@ export async function getOrderByID(orderID) {
 
     return await response.json();
 }
+
+export async function getCitiesForSelect() {
+    const responseCities = await getCities();
+    return responseCities.data.map((city) => ({
+        value: city.id,
+        label: city.name
+    }));
+}
+
+export async function getDistributionPointsForSelect() {
+    const responseDistributionPoints = await getDistributionPoints();
+    return responseDistributionPoints.data.map((distributionPoint) => ({
+        value: distributionPoint.id,
+        label: distributionPoint.name,
+        cityId: distributionPoint.cityId.id,
+        address: distributionPoint.address,
+    }));
+}
