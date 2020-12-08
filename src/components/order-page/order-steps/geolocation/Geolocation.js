@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import "./Geolocation.scss"
 import {getCities, getDistributionPoints} from "../../../../api/order";
-import {selectStyles} from "./select-styles";
 import MapStub from "../../../../img/map-stub.png";
-import Select from "react-select";
+import CustomSelect from "../../../common/select/Select";
 
 
 export default function Geolocation(props) {
@@ -59,9 +58,7 @@ export default function Geolocation(props) {
             <div className="pick-point">
                 <div className='pick-point__item pick-point__item_first'>
                     <div className='pick-point__item-type'>Город</div>
-                    <Select
-                        styles={selectStyles}
-                        isClearable="true"
+                    <CustomSelect
                         placeholder='Выбрать...'
                         onChange={(city) => changeCity(city)}
                         isDisabled={!cities && !distributionPoints}
@@ -71,9 +68,7 @@ export default function Geolocation(props) {
                 </div>
                 <div className='pick-point__item'>
                     <div className='pick-point__item-type'>Пункт выдачи</div>
-                    <Select
-                        styles={selectStyles}
-                        isClearable="true"
+                    <CustomSelect
                         options={distributionPoints}
                         isDisabled={!distributionPoints}
                         placeholder='Начните вводить пункт...'

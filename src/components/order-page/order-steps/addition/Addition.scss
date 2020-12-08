@@ -1,0 +1,33 @@
+@import 'src/styles/colors';
+
+.addition {
+  margin: 32px 0 0 64px;
+  &__item {
+    margin: 0 0 32px 0;
+
+  }
+  &__row {
+    display: flex;
+    &_date {
+      margin: 0 0 13px 0;
+    }
+  }
+  &__title-wrapper {
+    margin: 0 0 16px 0;
+  }
+  &__title {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    color: $black;
+  }
+  &__date-title {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 0 3px 0 0;
+    &_start-date {
+      margin: 0 3px 0 9px;
+    }
+  }
+}

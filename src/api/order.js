@@ -25,3 +25,41 @@ export async function getDistributionPoints() {
 
     return await response.json();
 }
+
+export async function getRate() {
+    const url = `${BASE_URL}rate`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
+export async function getOrderStatus() {
+    const url = `${BASE_URL}orderStatus`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
+export async function saveOrder(order) {
+    const url = `${BASE_URL}order`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: BASE_HEADERS,
+        body: JSON.stringify(order),
+    });
+
+    return await response.json();
+}
+
+export async function getOrderByID(orderID) {
+    const url = `${BASE_URL}order/${orderID}`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}

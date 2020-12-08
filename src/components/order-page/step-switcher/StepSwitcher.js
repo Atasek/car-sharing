@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import Model from "../order-steps/model/Model";
 import Addition from "../order-steps/addition/Addition";
-import Summary from "../order-steps/Summary";
+import Summary from "../order-steps/summary/Summary";
 import Geolocation from "../order-steps/geolocation/Geolocation";
 
 export const STEPS = {
@@ -24,9 +24,9 @@ export function StepSwitcher(props) {
         return <Model changeOrder={(order) => handleOrder(order)}/>;
     }
     if (props.step === STEPS.ADDITION) {
-        return <Addition changeOrder={(order) => handleOrder(order)}/>;
+        return <Addition carColors={props.order.car.colors} changeOrder={(order) => handleOrder(order)}/>;
     }
     if (props.step === STEPS.SUMMARY) {
-        return <Summary/>;
+        return <Summary order={props.order}/>;
     }
 }

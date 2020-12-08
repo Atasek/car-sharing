@@ -14,7 +14,11 @@ import {
 ReactDOM.render(
     <React.StrictMode>
         <Router >
-                    <Route path="/car-sharing/order" component={Order}/>
+                    <Route path="/car-sharing/order/:orderId?" component={Order}/>
+            <Route
+                path='/car-sharing/order/finished/:orderId?'
+                render={() => <Order isOrderConfirmed/>}
+            />
                     <Route exact path="/car-sharing" component={Main}/>
         </Router>
 
