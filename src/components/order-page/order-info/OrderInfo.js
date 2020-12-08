@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {STEPS} from "../step-switcher/StepSwitcher";
 import OrderInfoButton from "../components/order-info-button/OrderInfoButton";
 import './OrderInfo.scss';
-import {formatPriceNumber, getDurationOfLease, getPrice} from "../../../helpers";
+import {getDurationOfLease, getPrice} from "../../../helpers";
 export default function OrderInfo(props) {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const ADDITIONAL_SERVICES = [{

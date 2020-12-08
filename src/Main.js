@@ -2,8 +2,8 @@ import React from 'react'
 import './Main.scss';
 import Hamburger from "./components/mainPageComponents/hamburger/Hamburger";
 import LeftSidebar from "./components/mainPageComponents/left-sidebar/LeftSidebar";
-import CenterContent from "./components/mainPageComponents/mainCenter-content/CenterContent";
 import CustomCarousel from "./components/mainPageComponents/carousel/Carousel";
+import CenterContent from "./components/mainPageComponents/maincenter-content/CenterContent";
 
 
 function Main() {
