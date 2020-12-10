@@ -5,12 +5,27 @@ import "./OrderInfoButton.scss";
 export default function OrderInfoButton(props) {
 
     function getTitle(props) {
-        return (props.isOrderConfirmed && 'Отменить') ||
-            (props.step === STEPS.LOCATION && 'Выбрать модель') ||
-            (props.step === STEPS.MODEL && 'Дополнительно') ||
-            (props.step === STEPS.ADDITION && 'Итого') ||
-            (props.step === STEPS.SUMMARY && 'Заказать') ||
-            (props.isOrderConfirmed && 'Отменить');
+        if (props.isOrderConfirmed) {
+            return 'Отменить';
+        } else {
+            let title;
+            switch (props.step) {
+                case STEPS.LOCATION:
+                    title = 'Выбрать модель';
+                    break;
+                case STEPS.MODEL:
+                    title = 'Дополнительно';
+                    break;
+                case STEPS.ADDITION:
+                    title = 'Итого';
+                    break;
+                case STEPS.SUMMARY:
+                    title = 'Заказать';
+                default:
+                    break;
+            }
+            return title;
+        }
     }
 
     function getClass(props) {

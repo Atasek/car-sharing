@@ -18,27 +18,29 @@ export default function Order(props) {
     const history = useHistory();
 
     useEffect(() => {
-        (async () => {
-            if (orderId) {
-                const order = (await getOrderByID(orderId)).data;
-                const preparedOrder = {
-                    car: order.carId,
-                    dateFrom: new Date(order.dateFrom),
-                    dateTo: new Date(order.dateTo),
-                    color: order.carId.color,
-                    city: {label: order.cityId.name},
-                    distributionPoint: {address: order.pointId.address},
-                    rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
-                    isFullTank: order.isFullTank,
-                    isNeedChildChair: order.isNeedChildChair,
-                    isRightWheel: order.isRightWheel,
-                }
-                setOrder(preparedOrder);
-                setOrderConfirmed(true);
-                nextStep(STEPS.SUMMARY);
-            }
-        })()
+        if (orderId) {
+            initConfirmedOrder();
+        }
     }, [orderId])
+
+    async function initConfirmedOrder() {
+        const order = (await getOrderByID(orderId)).data;
+        const preparedOrder = {
+            car: order.carId,
+            dateFrom: new Date(order.dateFrom),
+            dateTo: new Date(order.dateTo),
+            color: order.carId.color,
+            city: {label: order.cityId.name},
+            distributionPoint: {address: order.pointId.address},
+            rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
+            isFullTank: order.isFullTank,
+            isNeedChildChair: order.isNeedChildChair,
+            isRightWheel: order.isRightWheel,
+        }
+        setOrder(preparedOrder);
+        setOrderConfirmed(true);
+        nextStep(STEPS.SUMMARY);
+    }
 
     async function confirmOrder() {
         const price = convertPriceNumber(getPrice(order));
@@ -63,11 +65,6 @@ export default function Order(props) {
         setOrderId(confirmedOrderID);
         setOrderConfirmed(true);
         setModalShown(false);
-    }
-
-    async function cancelOrder() {
-        // TODO: call modal and send request
-        // TODO: GET /db/orderStatus/{data_id}
     }
 
     return <div className="order">

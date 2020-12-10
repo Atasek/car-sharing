@@ -25,27 +25,4 @@
     line-height: 16px;
     margin: 16px 0 32px 0;
   }
-  &__line {
-    min-width: 50px;
-    flex-grow: 1;
-    flex-basis: auto;
-    border-bottom: 1px dotted $gray;
-    margin-left: 12px;
-    margin-right: 12px;
-    color: $gray;
-  }
-  &__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin: 0 0 16px 0;
-    text-align: right;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
-  }
-  &__value {
-    max-width: 101px;
-    color: $gray;
-  }
 }

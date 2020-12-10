@@ -40,11 +40,13 @@ export default function Addition(props) {
         checked: () => isRightWheel,
     } ];
 
+    async function fetchRate() {
+        const response = await getRate();
+        setRates(response.data);
+    }
+
     useEffect(() => {
-        (async () => {
-            const response = await getRate();
-            setRates(response.data);
-        })();
+        fetchRate();
     }, []);
 
         return (

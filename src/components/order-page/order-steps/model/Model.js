@@ -3,6 +3,7 @@ import "./Model.scss"
 import {getCars} from "../../../../api/order";
 import RadioInput from "../../../common/radio/Radio";
 import {formatPriceNumber} from "../../../../helpers";
+import {CORS_URL} from "../../../../api/common";
 
 
 export default function Model(props) {
@@ -11,12 +12,13 @@ export default function Model(props) {
     const [sortType, setSortType] = useState('Все модели');
     const [car, setCar] = useState(null);
 
+    async function fetchCars() {
+        const result = await getCars();
+        setOriginCars(result.data);
+        setCars(result.data);
+    }
+
     useEffect(() => {
-        async function fetchCars() {
-            const result = await getCars();
-            setOriginCars(result.data);
-            setCars(result.data);
-        }
         fetchCars();
     }, []);
 
@@ -61,7 +63,7 @@ export default function Model(props) {
                             </div>
                             <img className="catalog__image"
                                  src={(currentCar.thumbnail.path.includes('base64') && currentCar.thumbnail.path) ||
-                                 `https://cors-anywhere.herokuapp.com/http://api-factory.simbirsoft1.com${currentCar.thumbnail.path}`}
+                                 `${CORS_URL}http://api-factory.simbirsoft1.com${currentCar.thumbnail.path}`}
                                  referrerPolicy='origin'
                                  crossOrigin='anonymous'
                                  alt={currentCar.name}/>

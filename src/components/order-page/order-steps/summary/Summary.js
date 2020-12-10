@@ -1,6 +1,7 @@
 import React from "react";
 import "./Summary.scss";
 import {formatCarNumber, formatDate} from "../../../../helpers";
+import {CORS_URL} from "../../../../api/common";
 
 export default function Summary({order}) {
 
@@ -14,7 +15,7 @@ export default function Summary({order}) {
         <div className="summary__car-wrapper">
             <img className="summary__car"
                  src={(order.car.thumbnail.path.includes('base64') && order.car.thumbnail.path) ||
-                 `https://cors-anywhere.herokuapp.com/http://api-factory.simbirsoft1.com${order.car.thumbnail.path}`}
+                 `${CORS_URL}http://api-factory.simbirsoft1.com${order.car.thumbnail.path}`}
                  referrerPolicy='origin'
                  crossOrigin='anonymous'
                  alt={order.car.name}/>
