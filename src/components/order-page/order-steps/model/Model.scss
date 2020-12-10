@@ -1,0 +1,49 @@
+@import 'src/styles/colors';
+@import 'src/fonts/fonts';
+
+.catalog {
+  margin: 30px 0 30px 64px;
+  &__radio {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 736px;
+  }
+  &__description {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  &__image {
+    align-self: flex-end;
+    width: 256px;
+  }
+  &__item {
+    width: 368px;
+    height: 224px;
+    cursor: pointer;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $gray-light;
+    &:hover {
+      border-color: $gray;
+    }
+    &_active {
+      border-color: $main-accent;
+    }
+  }
+  &__name {
+    font-size: 18px;
+    line-height: 21px;
+    font-family: Roboto-Regular;
+  }
+  &__price {
+    font-size: 14px;
+    line-height: 16px;
+    color: $gray;
+  }
+}

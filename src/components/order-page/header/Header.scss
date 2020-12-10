@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 64px 32px 64px;
+  &__logo {
+    font-family: Roboto-Bold;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: #0ec261;
+    text-decoration: none;
+  }
+  &__geolocation {
+    font-family: Roboto-Light;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 94px;
+    height: 18px;
+    cursor: pointer;
+  }
+  &__city {
+    color: #999999;
+    outline: none !important;
+    text-decoration: none;
+  }
+}
+

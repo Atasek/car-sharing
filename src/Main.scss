@@ -1,0 +1,143 @@
+
+.main-page {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.carousel {
+  width: 688px;
+  height: 100%;
+  z-index: 1;
+
+  &__icon {
+    width: 10px;
+    height: 20px;
+
+    &_right-arrow {
+      background: url(./img/right-arrow.svg);
+    }
+
+    &_left-arrow {
+      background: url(./img/left-arrow.svg);
+    }
+  }
+
+  &__description {
+    width: 495px;
+    display: flex;
+    flex-direction: column;
+    top: 260px;
+  }
+
+  &__description button {
+    width: 164px;
+    height: 48px;
+  }
+
+  &__img {
+    width: 688px;
+    height: 100vh;
+  }
+
+  &__button {
+    height: 48px;
+    width: 164px;
+    border-radius: 4px;
+    outline: none;
+    border: 0px;
+    padding: 0px;
+    color: #FFFFFF;
+
+    &.green {
+      background: linear-gradient(90deg, #13493F 0%, #0C7B1B 100%);
+    }
+
+    &.blue {
+      background: linear-gradient(90deg, #132949 0%, #0C7B67 100%);
+    }
+
+    &.pink {
+      background: linear-gradient(90deg, #493013 0%, #7B0C3B 100%);
+    }
+
+    &.violet {
+      background: linear-gradient(90deg, #281349 0%, #720C7B 100%);
+    }
+  }
+
+
+  .carousel-indicators {
+    li {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background-color: #EEEEEE !important;
+      opacity: 1 !important;
+    }
+
+    .active {
+      background-color: #0EC261 !important;
+    }
+  }
+}
+
+.carousel-caption.text-left {
+  top: 260px;
+}
+
+.carousel-caption h3 {
+  font-family: Roboto-Medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 47px;
+  color: #fff;
+}
+
+.carousel-caption p {
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 90%;
+  color: #eee;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-prev:active {
+  transition: opacity .0s ease !important; //important чтобы перебить библиотечные стили карусели
+  opacity: 0.2 !important;
+  background: #0EC261 !important;
+}
+
+.carousel-control-next:hover,
+.carousel-control-next:active {
+  transition: opacity .0s ease !important;
+  opacity: 0.2 !important;
+  background: #0EC261 !important;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  .center-content {
+    width: 549px;
+  }
+  .carousel {
+    min-width: 415px;
+
+    &__img {
+      min-width: 415px;
+      height: 100vh ;
+    }
+  }
+  .carousel-caption.text-left {
+    top: 190px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .carousel {
+    display: none;
+  }
+}
+
