@@ -8,14 +8,15 @@ import Order from "./components/order-page/Order";
 import Admin from "./components/admin-panel/Admin";
 
 import {
-    BrowserRouter as Router,
-    Route
+    Route,
+    Switch
 } from "react-router-dom";
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router >
+
+        <Switch>
             <Route exact path="/car-sharing" render={() => <Main/>} />
             <Route exact path="/order" render={() => <Order/>} />
             <Route exact path="/admin" render={() => <Admin/>} />
@@ -23,7 +24,7 @@ ReactDOM.render(
                 path="/order/finished/:orderId?"
                 render={() => <Order isFinished />}
             />
-        </Router>
+            </Switch>
 
     </React.StrictMode>,
     document.getElementById('root')
