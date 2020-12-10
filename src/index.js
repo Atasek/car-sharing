@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './Main';
+import Main from './components/mainPageComponents/Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
 import Order from "./components/order-page/Order";
+import Admin from "./components/admin-panel/Admin";
+
 import {
     BrowserRouter as Router,
     Route
@@ -20,6 +22,7 @@ ReactDOM.render(
                 render={() => <Order isOrderConfirmed/>}
             />
                     <Route exact path="/car-sharing" component={Main}/>
+                    <Route exact path="/admin" component={Admin}/>
         </Router>
 
     </React.StrictMode>,
