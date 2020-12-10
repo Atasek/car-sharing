@@ -16,13 +16,13 @@ import {
 ReactDOM.render(
     <React.StrictMode>
         <Router >
-                    <Route path="/car-sharing/order/:orderId?" component={Order}/>
+            <Route exact path="/car-sharing" render={() => <Main/>} />
+            <Route exact path="/order" render={() => <Order/>} />
+            <Route exact path="/admin" render={() => <Admin/>} />
             <Route
-                path='/car-sharing/order/finished/:orderId?'
-                render={() => <Order isOrderConfirmed/>}
+                path="/order/finished/:orderId?"
+                render={() => <Order isFinished />}
             />
-                    <Route exact path="/car-sharing" component={Main}/>
-                    <Route exact path="/admin" component={Admin}/>
         </Router>
 
     </React.StrictMode>,
