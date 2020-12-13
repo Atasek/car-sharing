@@ -16,13 +16,14 @@ import {
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <BrowserRouter >
             <Switch>
-                <Route path='/order' component={Order}
+                <Route path='/car-sharing/admin' component={Admin}
+                />
+                <Route path='/car-sharing/order' component={Order}
                 />
                 <Route path='/car-sharing' component={Main}
                 />
-                <Route path='/admin' component={Admin}/>
             </Switch>
         </BrowserRouter>
 
