@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
 import Order from "./components/order-page/Order";
-import Admin from "./components/admin-panel/Admin";
+import LogIn from "./components/admin-panel/LogIn";
 
 import {
     BrowserRouter ,
@@ -18,7 +18,7 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter >
             <Switch>
-                <Route path='/car-sharing/admin' component={Admin}
+                <Route path='/car-sharing/admin' component={LogIn}
                 />
                 <Route path='/car-sharing/order' component={Order}
                 />
