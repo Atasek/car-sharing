@@ -16,14 +16,20 @@ import {
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter >
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Switch>
-                <Route path='/car-sharing/admin' component={LogIn}
-                />
-                <Route path='/car-sharing/order' component={Order}
-                />
-                <Route path='/car-sharing' component={Main}
-                />
+                <Route exact path='/'>
+                    <Main/>
+                </Route>
+                <Route path='/admin'>
+                    <LogIn/>
+                </Route>
+                <Route exact path='/order'>
+                    <Order/>
+                </Route>
+                <Route exact path='/order/:id'>
+                    <Order/>
+                </Route>
             </Switch>
         </BrowserRouter>
 

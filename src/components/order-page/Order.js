@@ -7,24 +7,24 @@ import OrderInfo from "./order-info/OrderInfo";
 import OrderStatus from "./breadcrumb/Breadcrumb";
 import {getOrderByID, getOrderStatus, saveOrder} from "../../api/order";
 import {convertPriceNumber, getPrice} from "../../helpers";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function Order(props) {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const [order, setOrder] = useState({});
     const [isModalShown, setModalShown] = useState(false);
     const [isOrderConfirmed, setOrderConfirmed] = useState(false);
-    const [orderId, setOrderId] = useState(props.match.params.orderId || null);
+    let { id } = useParams();
     const history = useHistory();
 
     useEffect(() => {
-        if (orderId) {
+        if (id) {
             initConfirmedOrder();
         }
-    }, [orderId])
+    }, [id])
 
     async function initConfirmedOrder() {
-        const order = (await getOrderByID(orderId)).data;
+        const order = (await getOrderByID(id)).data;
         const preparedOrder = {
             car: order.carId,
             dateFrom: new Date(order.dateFrom),
@@ -61,9 +61,7 @@ export default function Order(props) {
         }
         const confirmedOrder = await saveOrder(preparedOrder);
         const confirmedOrderID = confirmedOrder.data.id;
-        history.push(`/car-sharing/order/${confirmedOrderID}`);
-        setOrderId(confirmedOrderID);
-        setOrderConfirmed(true);
+        history.push(`/order/${confirmedOrderID}`);
         setModalShown(false);
     }
 
