@@ -5,13 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
 import Order from "./components/order-page/Order";
-import LogIn from "./components/admin-panel/LogIn";
-
-import {
-    BrowserRouter ,
-    Route,
-    Switch
-} from "react-router-dom";
+import Admin from "./components/admin/Admin";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 
 ReactDOM.render(
@@ -22,7 +17,7 @@ ReactDOM.render(
                     <Main/>
                 </Route>
                 <Route path='/admin'>
-                    <LogIn/>
+                    <Admin/>
                 </Route>
                 <Route exact path='/order'>
                     <Order/>

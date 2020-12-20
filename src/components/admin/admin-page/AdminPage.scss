@@ -1,0 +1,14 @@
+.navbar{
+  width: 290px;
+  background: #fff;
+  box-shadow: 0 1px 75px rgba(90,97,105,.11), 0 2px 4px rgba(90,97,105,.12), 0 7.5px 11px rgba(90,97,105,.1), 0 3.5px 17.5px rgba(165,182,201,.1);
+
+  &__logo{
+    height: 68px;
+    box-shadow: inset 0 -1px 0 #e1e5eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
