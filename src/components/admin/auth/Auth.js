@@ -21,6 +21,7 @@ export default function Auth({setAuthData}) {
     }
 
     return (
+        <div className="enter__background">
         <div className="enter">
             <div className="enter__logo">
                 <LogoIcon/>
@@ -48,6 +49,7 @@ export default function Auth({setAuthData}) {
                     <button onClick={authUser} className="footer__button">Войти</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

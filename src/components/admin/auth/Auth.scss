@@ -6,6 +6,11 @@
   margin: 167px auto;
   width: 376.5px;
 
+  &__background{
+    background: #f5f6f8;
+    display: flex;
+    justify-content: center;
+  }
   &__logo {
     display: flex;
     align-items: center;
@@ -33,13 +38,16 @@
 
   }
   &__title {
-    text-align: center;
-    margin: 19px 0 30px;
     font-style: normal;
-    font-weight: normal;
-    font-size: 17.5px;
+    font-weight: 400;
+    font-size: 17px;
     line-height: 20px;
-    color: #3D5170;
+    text-align: center;
+    color: #3d5170;
+    margin: 19px 0 30px;
+
+
+
   }
 
   &__label {
@@ -83,8 +91,9 @@
         border-radius: 4px;
       }
     .footer__access{
+      font-weight: 400;
+      cursor: pointer;
       font-style: normal;
-      font-weight: normal;
       font-size: 10.5px;
       line-height: 12px;
       color: #007BFF;
