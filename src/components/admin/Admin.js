@@ -9,14 +9,14 @@ export default function Admin() {
     const [expiresIn, setExpiresIn] = useState(null);
     return <Switch>
         <Route exact
-               path='/car-sharing/admin/login'>
+               path='/admin/login'>
             <Auth setAuthData={(authData) => {
                 setToken(authData.token);
                 setExpiresIn(authData.expiresIn);
             }}/>
         </Route>
-        {token && <Route exact path='/car-sharing/admin'><AdminPage/></Route>
-        || <Redirect to="/car-sharing/admin/login"/>}
+        {token && <Route exact path='/admin'><AdminPage/></Route>
+        || <Redirect to="/admin/login"/>}
     </Switch>
 
 }

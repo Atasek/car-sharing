@@ -17,7 +17,7 @@ export default function Auth({setAuthData}) {
             password: password
         });
       setAuthData({token:response.access_token, expiresIn:response.expires_in});
-      history.push('/car-sharing/admin')
+      history.push('/admin')
     }
 
     return (
