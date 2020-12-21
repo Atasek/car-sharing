@@ -1,7 +1,7 @@
-import {AUTH_HEADERS, BASE_HEADERS} from "./common";
+import {AUTH_HEADERS, AUTH_URL} from "./common";
 
 export async function auth(userData) {
-    const url = `http://api-factory.simbirsoft1.com/api/auth/login/oauth`;
+    const url = `${AUTH_URL}login/oauth`;
     const response = await fetch(url, {
         method: 'POST',
         headers: AUTH_HEADERS,
@@ -12,7 +12,7 @@ export async function auth(userData) {
 }
 
 export async function refresh() {
-    const url = `http://api-factory.simbirsoft1.com/api/auth/refresh`;
+    const url = `${AUTH_URL}refresh`;
     const response = await fetch(url, {
         headers: AUTH_HEADERS,
     });
