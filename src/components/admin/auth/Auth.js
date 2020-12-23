@@ -11,7 +11,6 @@ export default function Auth({setAuthData}) {
     const [password, setPassword] = useState("");
     const history = useHistory();
 
-    //  Авторизация не закончена, после отправки запроса как минимум сделать редирект, а перед этим что-то сделать с ответов запроса.
     async function authUser() {
         const response = await auth({
             username: email,
