@@ -1,0 +1,29 @@
+.footer{
+  background: #fff;
+  display: flex;
+  height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-shadow: 0 -0.5px 0 #d7dae3;
+  &__links{
+    display: flex;
+  }
+  &__link{
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #007bff;
+    margin-right: 16px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &__title{
+    color: #818ea3;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: right;
+  }
+
+}

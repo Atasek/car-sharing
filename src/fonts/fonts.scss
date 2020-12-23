@@ -20,3 +20,16 @@
 p, span {
   font-family: Roboto-Light;
 }
+
+@font-face {
+  font-family: Helvetica-Light;
+  src: url("../fonts/Helvetica/HelveticaLight/HelveticaLight.woff");
+}
+@font-face {
+  font-family: Helvetica-Normal;
+  src: url("../fonts/Helvetica/Helvetica-Normal.ttf");
+}
+@font-face {
+  font-family: Helvetica-Regular;
+  src: url("../fonts/Helvetica/HelveticaRegular/HelveticaRegular.woff");
+}
