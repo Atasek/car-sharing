@@ -4,6 +4,7 @@ import {ReactComponent as LogoIcon} from "../../../img/LogoIcon.svg";
 import {auth} from "../../../api/admin";
 import {AdminCustomInput} from "../components/AdminCustomInput";
 import { useHistory } from "react-router-dom";
+import {AdminCustomButton} from "../components/AdminCustomButton";
 
 export default function Auth({setAuthData}) {
     const [email, setEmail] = useState("");
@@ -45,8 +46,10 @@ export default function Auth({setAuthData}) {
                 </div>
                 <div className="enter__footer">
                     <a href="#" className="footer__access">Запросить доступ</a>
-                    {/* переиспользовать через компонент?*/}
-                    <button onClick={authUser} className="footer__button">Войти</button>
+                  <AdminCustomButton
+                      onClick={authUser}
+                      label="Войти"
+                  />
                 </div>
             </div>
         </div>

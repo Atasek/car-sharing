@@ -2,19 +2,19 @@
   &__input{
     width: 341.5px;
     height: 29px;
-    margin-top: 8.5px;
+    margin: 0 0 6px;
     border: 0.5px solid #BECAD6;
     box-sizing: border-box;
     border-radius: 3px;
   }
   &__label {
-    flex-direction: column;
-    display: flex;
     font-style: normal;
-    font-weight: normal;
-    font-size: 10.5px;
+    font-weight: 400;
+    font-size: 12px;
     line-height: 12px;
     color: #495057;
+    align-self: start;
+    margin-bottom: 8px;
 
   }
 }
