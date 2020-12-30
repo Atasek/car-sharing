@@ -1,5 +1,6 @@
 import React from "react";
 import "./AdminFooter.scss"
+
 export function AdminFooter() {
     return <div className="admin__footer footer">
         <div className="footer__links">
