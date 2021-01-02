@@ -18,7 +18,7 @@ export default function Admin() {
             }}/>
         </Route>
 
-        {token && <Route path={`${url}`}><AdminPage/></Route>
+        {token && <Route path={`${url}`}><AdminPage token={token}/></Route>
         || <Redirect to={`${url}/login`}/>}
 
     </Switch>

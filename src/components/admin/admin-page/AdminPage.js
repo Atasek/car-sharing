@@ -8,7 +8,7 @@ import {AdminFault} from "./error/AdminFault";
 import {AdminOrder} from "./orders/AdminOrder";
 
 
-export default function AdminPage() {
+export default function AdminPage({token}) {
     const {url} = useRouteMatch();
     return <div className="admin">
         <AdminBar/>
@@ -16,7 +16,7 @@ export default function AdminPage() {
             <AdminHeader/>
             <div className="admin__content">
                 <Switch>
-                    <Route path={`${url}/orders`}><AdminOrder/></Route>
+                    <Route path={`${url}/orders`}><AdminOrder token={token}/></Route>
                     <Route path={`${url}/unknown`}><AdminFault/></Route>
                 </Switch>
             </div>

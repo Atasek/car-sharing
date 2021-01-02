@@ -8,6 +8,10 @@ color: #3d5170;
 .orders {
   display: flex;
   flex-direction: column;
-
+  &__header{
+    display: flex;
+    align-items: center;
+    padding: 16px 20px 0;
+  }
   }
 
