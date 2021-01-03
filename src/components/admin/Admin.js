@@ -1,26 +1,24 @@
-import React, {useState} from 'react'
+import React from 'react'
 import AdminPage from "./admin-page/AdminPage";
 import Auth from "./auth/Auth";
 import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
+import {isAuthorised} from "../../api/admin";
 
 
 export default function Admin() {
     const {url} = useRouteMatch();
-    const [token, setToken] = useState(null);
-    const [expiresIn, setExpiresIn] = useState(null);
-    return <Switch>
 
+    return <Switch>
         <Route exact
                path={`${url}/login`}>
-            <Auth setAuthData={(authData) => {
-                setToken(authData.token);
-                setExpiresIn(authData.expiresIn);
-            }}/>
+            <Auth/>
         </Route>
-
-        {token && <Route path={`${url}`}><AdminPage token={token}/></Route>
-        || <Redirect to={`${url}/login`}/>}
-
+        {(isAuthorised() &&
+            <Route path={`${url}`}>
+                <AdminPage/>
+            </Route>) ||
+        <Redirect to={`${url}/login`}/>
+        }
     </Switch>
 
 }

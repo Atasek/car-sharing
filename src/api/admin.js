@@ -36,12 +36,16 @@ export function getAuthToken() {
     return btoa(string);
 }
 
-
-/*
-function getRandomString(length) {
-    const zeroWithDotLength = 2;
-    return Math.random().toString(36).substring(zeroWithDotLength, length + zeroWithDotLength);
+export function saveAuthorization(token, expiresIn) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('expiresIn', Date.now() + expiresIn);
 }
 
-getRandomString(RANDOM_KEY_LENGTH_LIMIT);
-*/
+export function getToken() {
+        return localStorage.getItem('token');
+}
+
+export function isAuthorised() {
+    const expiresIn = Number(localStorage.getItem('expiresIn'));
+    return expiresIn && expiresIn > Date.now();
+}

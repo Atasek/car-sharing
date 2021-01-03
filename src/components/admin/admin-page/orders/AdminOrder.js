@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from "react";
-import {AdminCustomSelect} from "../../components/AdminCustomSelect";
-import CustomSelect from "../../../common/select/Select";
+import React, {useState} from "react";
 
 
 const periodOptions = [
@@ -9,31 +7,20 @@ const periodOptions = [
     { label: "За месяц", value: "month" },
     { label: "За неделю", value: "week" },
     { label: "За день", value: "day" }
-]
-/*const [city, setCity] = useState(null);
-const [periodFilter, setPeriodFilter] = useState(null);
-const [modelFilter, setModelFilter] = useState(null);
-const [cityFilter, setCityFilter] = useState(null);
-const [statusFilter, setStatusFilter] = useState(null)
-
-function changePeriod(period) {
-    props.changePeriod({period, PeriodFilter})
-    if (period) {
-        const filteredPeriodOptions = originPeriodOptions.filter((periodOptions) =>
-            periodOptions.label === city.value
-        );
-        setPeriodFilter(filteredPeriodOptions);
-    } else {
-        setPeriodFilter(originPeriodOptions);
-    }
-}*/
+];
 
     export function AdminOrder() {
+        const [city, setCity] = useState(null);
+        const [periodFilter, setPeriodFilter] = useState(null);
+        const [modelFilter, setModelFilter] = useState(null);
+        const [cityFilter, setCityFilter] = useState(null);
+        const [statusFilter, setStatusFilter] = useState(null);
+
         return <div className="admin__orders">
             <div className="orders__title">Заказы</div>
             <div className="orders">
                 <div className="orders__header">
-                    <CustomSelect
+                    {/*<CustomSelect
                         options={periodOptions}
                         placeholder='За неделю'
                     />
@@ -51,11 +38,10 @@ function changePeriod(period) {
                     <CustomSelect
                         options={periodOptions}
                         placeholder='В процессе'
-                    />
+                    />*/}
                 </div>
 
 
             </div>
         </div>
-    }
 }

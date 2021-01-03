@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import "./Auth.scss"
 import {ReactComponent as LogoIcon} from "../../../img/LogoIcon.svg";
-import {auth} from "../../../api/admin";
+import {auth, saveAuthorization} from "../../../api/admin";
 import {AdminCustomInput} from "../components/AdminCustomInput";
 import { useHistory } from "react-router-dom";
 import {AdminCustomButton} from "../components/AdminCustomButton";
 
-export default function Auth({setAuthData}) {
+export default function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -16,8 +16,8 @@ export default function Auth({setAuthData}) {
             username: email,
             password: password
         });
-      setAuthData({token:response.access_token, expiresIn:response.expires_in});
-      history.push('/admin')
+        saveAuthorization(response.access_token, response.expires_in);
+        history.push('/admin')
     }
 
     return (
@@ -44,7 +44,7 @@ export default function Auth({setAuthData}) {
                     />
                 </div>
                 <div className="enter__footer">
-                    <a href="#" className="footer__access">Запросить доступ</a>
+                    <button className="footer__access">Запросить доступ</button>
                   <AdminCustomButton
                       onClick={authUser}
                       label="Войти"
