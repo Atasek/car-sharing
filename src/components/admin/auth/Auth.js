@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import "./Auth.scss"
 import {ReactComponent as LogoIcon} from "../../../img/LogoIcon.svg";
-import {auth, saveAuthorization} from "../../../api/admin";
+import {auth} from "../../../api/admin";
 import {AdminCustomInput} from "../components/AdminCustomInput";
 import { useHistory } from "react-router-dom";
 import {AdminCustomButton} from "../components/AdminCustomButton";
+import {saveAuthorization} from "../../../api/common";
 
 export default function Auth() {
     const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function Auth() {
                 <LogoIcon/>
                 <div className="enter__logo__text">Need for drive</div>
             </div>
-            <div className="enter__form">
+            <form className="enter__form">
                 <div className="enter__title">Вход</div>
                 <div className="enter__auth">
                     <AdminCustomInput
@@ -50,7 +51,7 @@ export default function Auth() {
                       label="Войти"
                   />
                 </div>
-            </div>
+            </form>
         </div>
         </div>
     );
