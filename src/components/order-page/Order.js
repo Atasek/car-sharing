@@ -18,29 +18,28 @@ export default function Order(props) {
     const history = useHistory();
 
     useEffect(() => {
+        async function initConfirmedOrder() {
+            const order = (await getOrderByID(id)).data;
+            const preparedOrder = {
+                car: order.carId,
+                dateFrom: new Date(order.dateFrom),
+                dateTo: new Date(order.dateTo),
+                color: order.carId.color,
+                city: {label: order.cityId.name},
+                distributionPoint: {address: order.pointId.address},
+                rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
+                isFullTank: order.isFullTank,
+                isNeedChildChair: order.isNeedChildChair,
+                isRightWheel: order.isRightWheel,
+            }
+            setOrder(preparedOrder);
+            setOrderConfirmed(true);
+            nextStep(STEPS.SUMMARY);
+        }
         if (id) {
             initConfirmedOrder();
         }
     }, [id])
-
-    async function initConfirmedOrder() {
-        const order = (await getOrderByID(id)).data;
-        const preparedOrder = {
-            car: order.carId,
-            dateFrom: new Date(order.dateFrom),
-            dateTo: new Date(order.dateTo),
-            color: order.carId.color,
-            city: {label: order.cityId.name},
-            distributionPoint: {address: order.pointId.address},
-            rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
-            isFullTank: order.isFullTank,
-            isNeedChildChair: order.isNeedChildChair,
-            isRightWheel: order.isRightWheel,
-        }
-        setOrder(preparedOrder);
-        setOrderConfirmed(true);
-        nextStep(STEPS.SUMMARY);
-    }
 
     async function confirmOrder() {
         const price = convertPriceNumber(getPrice(order));

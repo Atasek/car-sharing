@@ -4,6 +4,7 @@ import {ReactComponent as PostIcon} from "../../../../img/blog-post.svg";
 import {ReactComponent as AddIcon} from "../../../../img/add-post.svg";
 import React from "react";
 import "./AdminBar.scss"
+import {Link} from "react-router-dom";
 
 
 export function AdminBar(){
@@ -24,7 +25,7 @@ export function AdminBar(){
 
             <div className="menu__card">
                 <AddIcon/>
-                <div className="menu__card-title">Заказы</div>
+                <div className="menu__card-title"><Link to="/admin/orders">Заказы</Link></div>
             </div>
         </div>
     </div>

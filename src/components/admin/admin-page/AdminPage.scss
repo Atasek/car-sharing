@@ -17,9 +17,6 @@
   }
 }
 
-
-
-
 .fault{
   height: 100%;
   display: flex;
@@ -50,4 +47,20 @@
     margin-top: 15px;
   }
 
+}
+
+p {
+  margin: 0 0 0 0;
+}
+
+*, ::after, ::before {
+  box-sizing: initial;
+}
+
+dl, ol, ul {
+  margin: 0;
+}
+
+a {
+  color: inherit;
 }

@@ -5,8 +5,9 @@ import {auth} from "../../../api/admin";
 import {AdminCustomInput} from "../components/AdminCustomInput";
 import { useHistory } from "react-router-dom";
 import {AdminCustomButton} from "../components/AdminCustomButton";
+import {saveAuthorization} from "../../../api/common";
 
-export default function Auth({setAuthData}) {
+export default function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -16,8 +17,8 @@ export default function Auth({setAuthData}) {
             username: email,
             password: password
         });
-      setAuthData({token:response.access_token, expiresIn:response.expires_in});
-      history.push('/admin')
+        saveAuthorization(response.access_token, response.expires_in);
+        history.push('/admin')
     }
 
     return (
@@ -27,7 +28,7 @@ export default function Auth({setAuthData}) {
                 <LogoIcon/>
                 <div className="enter__logo__text">Need for drive</div>
             </div>
-            <div className="enter__form">
+            <form className="enter__form">
                 <div className="enter__title">Вход</div>
                 <div className="enter__auth">
                     <AdminCustomInput
@@ -44,13 +45,13 @@ export default function Auth({setAuthData}) {
                     />
                 </div>
                 <div className="enter__footer">
-                    <a href="#" className="footer__access">Запросить доступ</a>
+                    <button className="footer__access">Запросить доступ</button>
                   <AdminCustomButton
                       onClick={authUser}
                       label="Войти"
                   />
                 </div>
-            </div>
+            </form>
         </div>
         </div>
     );
