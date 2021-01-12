@@ -6,8 +6,11 @@ import {AdminCustomInput} from "../components/AdminCustomInput";
 import { useHistory } from "react-router-dom";
 import {AdminCustomButton} from "../components/AdminCustomButton";
 import {saveAuthorization} from "../../../api/common";
+import {cn} from "../../../helpers";
 
 export default function Auth() {
+    const authCn = cn('auth');
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -22,37 +25,37 @@ export default function Auth() {
     }
 
     return (
-        <div className="enter__background">
-        <div className="enter">
-            <div className="enter__logo">
-                <LogoIcon/>
-                <div className="enter__logo__text">Need for drive</div>
-            </div>
-            <form className="enter__form">
-                <div className="enter__title">Вход</div>
-                <div className="enter__auth">
-                    <AdminCustomInput
-                        label="Почта"
-                        onChange={setEmail}
-                        value={email}
+        <div className={authCn()}>
+            <div className={authCn('background')}>
+                <div className={authCn('logo')}>
+                    <LogoIcon/>
+                    <div className={authCn('logo-title')}>Need for drive</div>
+                </div>
+                <form className={authCn('form')}>
+                    <div className={authCn('title')}>Вход</div>
+                    <div className={authCn('fields')}>
+                        <AdminCustomInput
+                            label="Почта"
+                            onChange={setEmail}
+                            value={email}
 
-                    />
-                    <AdminCustomInput
-                        type="password"
-                        label="Пароль"
-                        onChange={setPassword}
-                        value={password}
-                    />
-                </div>
-                <div className="enter__footer">
-                    <button className="footer__access">Запросить доступ</button>
-                  <AdminCustomButton
-                      onClick={authUser}
-                      label="Войти"
-                  />
-                </div>
-            </form>
-        </div>
+                        />
+                        <AdminCustomInput
+                            type="password"
+                            label="Пароль"
+                            onChange={setPassword}
+                            value={password}
+                        />
+                    </div>
+                    <div className={authCn('footer')}>
+                        <button className={authCn('get-access')}>Запросить доступ</button>
+                        <AdminCustomButton
+                            onClick={authUser}
+                            label="Войти"
+                        />
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
