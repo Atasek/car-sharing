@@ -19,18 +19,23 @@ export default function Order(props) {
 
     useEffect(() => {
         async function initConfirmedOrder() {
-            const order = (await getOrderByID(id)).data;
+            const {carId: car,
+                isFullTank,
+                isNeedChildChair,
+                isRightWheel,
+                ...order
+            } = (await getOrderByID(id)).data;
             const preparedOrder = {
-                car: order.carId,
+                car,
+                isFullTank,
+                isNeedChildChair,
+                isRightWheel,
+                color: car.color,
                 dateFrom: new Date(order.dateFrom),
                 dateTo: new Date(order.dateTo),
-                color: order.carId.color,
                 city: {label: order.cityId.name},
                 distributionPoint: {address: order.pointId.address},
                 rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
-                isFullTank: order.isFullTank,
-                isNeedChildChair: order.isNeedChildChair,
-                isRightWheel: order.isRightWheel,
             }
             setOrder(preparedOrder);
             setOrderConfirmed(true);

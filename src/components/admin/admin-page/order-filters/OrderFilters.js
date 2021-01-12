@@ -1,5 +1,5 @@
 import {AdminCustomButton} from "../../components/AdminCustomButton";
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import "./OrderFilters.scss";
 import CustomSelect from "../../../common/select/Select";
 import {getCars, getCities, getOrderStatus} from "../../../../api/order";
@@ -66,8 +66,25 @@ export const filterStyles = {
     )
 }
 
+function filterReducer(state, action) {
+    switch (action.type) {
+        case 'createdAt':
+            return {...state, createdAt: action.payload};
+        case 'carId':
+            return {...state, carId: action.payload};
+        case 'cityId':
+            return {...state, cityId: action.payload};
+        case 'orderStatusId':
+            return {...state, orderStatusId: action.payload};
+        default:
+            throw new Error('Неизвестный фильтр');
+    }
+}
+
+const initialFiltersState = {createdAt: null, carId: null, cityId: null, orderStatusId: null};
+
 export function OrderFilters({applyFilters}) {
-    const [filters, setFilter] = useState({createdAt: null, carId: null, cityId: null, orderStatusId: null});
+    const [filters, setFilter] = useReducer(filterReducer, initialFiltersState);
     const [cars, setCars] = useState(null);
     const [cities, setCities] = useState(null);
     const [statuses, setStatuses] = useState(null);
@@ -107,7 +124,7 @@ export function OrderFilters({applyFilters}) {
                 styles={filterStyles}
                 placeholder="За всё время"
                 onChange={(createdAt) => {
-                    setFilter({...filters, createdAt})
+                    setFilter({type: 'createdAt', payload: createdAt})
                 }}
                 options={getCreatedAtOptions()}
                 value={filters.createdAt}
@@ -117,7 +134,7 @@ export function OrderFilters({applyFilters}) {
                 styles={filterStyles}
                 placeholder="Все модели"
                 onChange={(carId) => {
-                    setFilter({...filters, carId})
+                    setFilter({type: 'carId', payload: carId})
                 }}
                 isDisabled={!cars}
                 options={cars}
@@ -128,7 +145,7 @@ export function OrderFilters({applyFilters}) {
                 styles={filterStyles}
                 placeholder="Все города"
                 onChange={(cityId) => {
-                    setFilter({...filters, cityId})
+                    setFilter({type: 'cityId', payload: cityId})
                 }}
                 isDisabled={!cities}
                 options={cities}
@@ -139,7 +156,7 @@ export function OrderFilters({applyFilters}) {
                 styles={filterStyles}
                 placeholder="Все статусы"
                 onChange={(orderStatusId) => {
-                    setFilter({...filters, orderStatusId})
+                    setFilter({type: 'orderStatusId', payload: orderStatusId})
                 }}
                 isDisabled={!statuses}
                 options={statuses}

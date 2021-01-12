@@ -4,16 +4,17 @@ import "./AdminOrder.scss";
 import Paginator from "../paginator/Paginator";
 import {getOrders} from "../../../../api/admin";
 import {OrderList} from "../order-list/OrderList";
+import {cn} from "../../../../helpers";
 
 
 export function AdminOrder() {
+    const ordersCn = cn('orders');
+
     const [orders, setOrders] = useState([]);
     const [ordersCount, setOrdersCount] = useState([]);
     const [filters, setFilters] = useState({});
     const [page, setPage] = useState(0);
     const ordersPerPage = 3;
-
-
 
     useEffect(() => {
         async function loadOrders() {
@@ -29,22 +30,24 @@ export function AdminOrder() {
         setFilters(filters);
     }
 
-    return <div className="orders">
-        <div className="orders__title">Заказы</div>
-        <div className="orders__content">
-            <div className="orders__filters">
+    function changePage(selected) {
+        setPage(Number(selected));
+    }
+
+    return <div className={ordersCn()}>
+        <div className={ordersCn('title')}>Заказы</div>
+        <div className={ordersCn('content')}>
+            <div className={ordersCn('filters')}>
                 <OrderFilters applyFilters={filterOrders}/>
             </div>
-            <div className="orders__list">
-                {(orders.length === 0 && <p className="orders__not-found">Не найдено</p>) || <OrderList orders={orders}/>}
+            <div className={ordersCn('list')}>
+                {orders.length === 0 ? <p className={ordersCn('not-found')}>Не найдено</p> : <OrderList orders={orders}/>}
             </div>
-            <div className="orders__footer">
+            <div className={ordersCn('footer')}>
                 <Paginator
                     itemsCount={ordersCount}
                     pageSize={ordersPerPage}
-                    onPageChange={({selected}) => {
-                        setPage(Number(selected));
-                    }}
+                    onPageChange={({selected}) => changePage(selected)}
                 />
             </div>
         </div>

@@ -18,7 +18,7 @@ export const AUTH_HEADERS = {
 export const ADMIN_HEADERS = {
     'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
     'Content-Type': 'application/json;charset=UTF-8',
-    'Authorization': `Bearer ${getToken()}`,
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
 };
 
 function getRandomKey() {
@@ -39,10 +39,6 @@ function getLocalGeneratedToken() {
 export function saveAuthorization(token, expiresIn) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiresIn', Date.now() + expiresIn);
-}
-
-export function getToken() {
-    return localStorage.getItem('token');
 }
 
 export function isAuthorised() {

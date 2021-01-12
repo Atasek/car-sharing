@@ -24,6 +24,7 @@ export async function getOrders(page, limit, filters) {
         page,
         limit
     };
+    // Удаляем пустые фильтры, чтобы избежать 500 с сервера
     Object.keys(filters).forEach(key => {
         if (filters[key]) {
             params[key] = filters[key];

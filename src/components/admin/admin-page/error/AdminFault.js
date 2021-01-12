@@ -1,14 +1,14 @@
 import {AdminCustomButton} from "../../components/AdminCustomButton";
 import React from "react";
+import {cn} from "../../../../helpers";
 
 export function AdminFault() {
- return <div className="admin__fault fault">
-    <div className="fault__code">500</div>
-    <div className="fault__message">Что-то пошло не так</div>
-    <div className="fault__advice">Попробуйте перезагрузить страницу</div>
-    <div className="admin__button">
-        <AdminCustomButton
-        label="Назад" />
+    const faultCn = cn("fault");
+
+    return <div className={faultCn()}>
+        <div className={faultCn("fault")}>500</div>
+        <div className={faultCn("message")}>Что-то пошло не так</div>
+        <div className={faultCn("advice")}>Попробуйте перезагрузить страницу</div>
+        <AdminCustomButton label="Назад"/>
     </div>
- </div>
-    }
+}

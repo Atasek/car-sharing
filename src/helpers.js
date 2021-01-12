@@ -1,4 +1,5 @@
 import {STEPS} from "./components/order-page/step-switcher/StepSwitcher";
+import {withNaming} from "@bem-react/classname";
 
 export function formatPriceNumber(bigNumber) {
     return Number(bigNumber).toLocaleString().replace(/,/g, ' ')
@@ -55,3 +56,5 @@ export function getDurationOfLease(dateTo, dateFrom) {
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
 }
+
+export const cn = withNaming({ n: '', e: '__', m: '_', v: '_' });

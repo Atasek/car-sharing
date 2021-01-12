@@ -10,6 +10,7 @@ export default function CustomCheckbox({value, onChange, label, checked}) {
             checked={checked}
             value={value}
             onChange={onChange}
+            readOnly={!onChange}
         />
         <label className="checkbox__label" htmlFor={label}>
             {label}

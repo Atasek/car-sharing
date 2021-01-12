@@ -8,8 +8,6 @@ import Order from "./components/order-page/Order";
 import Admin from "./components/admin/Admin";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-
-
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter basename={process.env.PUBLIC_URL}>

@@ -6,18 +6,9 @@ import Approve from "../../../../img/approve.svg";
 import Reject from "../../../../img/reject.svg";
 import Change from "../../../../img/change.svg";
 import {formatPriceNumber} from "../../../../helpers";
+import {ADDITIONAL_SERVICES} from "../../../../consts";
 
 export function OrderList({orders}) {
-    const ADDITIONAL_SERVICES = [{
-        key: "isFullTank",
-        label: "Полный бак, 500₽",
-    },{
-        key: "isNeedChildChair",
-        label: "Детское кресло, 200₽",
-    },{
-        key: "isRightWheel",
-        label: "Правый руль, 1600₽",
-    } ];
     return orders.map(order =>
             <div className="order-item" key={order.id}>
                 <div className="order-item__description-wrapper">
@@ -29,15 +20,15 @@ export function OrderList({orders}) {
                         crossOrigin="anonymous"
                     />
                     <div className="order-item__description">
-                        <p className="order-item__main-description">
+                        <p>
                             <span className="order-item__car-name">{order.carId?.name || '—'} </span>
                             в
                             <span className="order-item__city"> {order.cityId?.name || '—'}</span>
-                            <span className="order-item__street">, {order.pointId?.address || '—'}</span>
+                            <span>, {order.pointId?.address || '—'}</span>
                         </p>
                         <p className="order-item__date">12.06.2019 12:00 — 13.06.2019 12:00</p>
-                        <p className="order-item__color-description">
-                            <span className="order-item__color-title">Цвет: </span>
+                        <p>
+                            <span>Цвет: </span>
                             <span className="order-item__color-value">{order.color || '—'}</span>
                         </p>
                     </div>
@@ -49,7 +40,6 @@ export function OrderList({orders}) {
                         value={order[additionalService.key]}
                         label={additionalService.label}
                         checked={order[additionalService.key]}
-                        onChange={() => {}}
                     />)}
                 </div>
                 <div className="order-item__price">{formatPriceNumber(order.price) || '—'} ₽</div>

@@ -13,11 +13,11 @@ export default function Admin() {
                path={`${url}/login`}>
             <Auth/>
         </Route>
-        {(isAuthorised() &&
+        {isAuthorised() ?
             <Route path={`${url}`}>
                 <AdminPage/>
-            </Route>) ||
-        <Redirect to={`${url}/login`}/>
+            </Route> :
+            <Redirect to={`${url}/login`}/>
         }
     </Switch>
 
