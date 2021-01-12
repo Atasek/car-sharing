@@ -1,4 +1,4 @@
-import {ADMIN_HEADERS, AUTH_HEADERS, AUTH_URL, BASE_URL} from "./common";
+import {ADMIN_HEADERS, AUTH_HEADERS, AUTH_URL, BASE_URL, getPaginationParams} from "./common";
 
 export async function auth(userData) {
     const url = `${AUTH_URL}login`;
@@ -20,17 +20,15 @@ export async function refresh() {
 }
 
 export async function getOrders(page, limit, filters) {
-    const params = {
-        page,
-        limit
-    };
-    // Удаляем пустые фильтры, чтобы избежать 500 с сервера
-    Object.keys(filters).forEach(key => {
-        if (filters[key]) {
-            params[key] = filters[key];
-        }
+    const url = `${BASE_URL}order?${getPaginationParams(page, limit, filters)}`;
+    const response = await fetch(url, {
+        headers: ADMIN_HEADERS,
     });
-    const url = `${BASE_URL}order?${new URLSearchParams(params)}`;
+    return await response.json();
+}
+
+export async function getCars(page, limit, filters) {
+    const url = `${BASE_URL}car?${getPaginationParams(page, limit, filters)}`;
     const response = await fetch(url, {
         headers: ADMIN_HEADERS,
     });

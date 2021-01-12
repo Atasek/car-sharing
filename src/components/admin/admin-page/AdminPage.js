@@ -6,6 +6,7 @@ import {AdminHeader} from "./header/AdminHeader";
 import {AdminFooter} from "./footer/AdminFooter";
 import {AdminFault} from "./error/AdminFault";
 import {AdminOrder} from "./orders/AdminOrder";
+import {ModelsPage} from "./models/ModelsPage";
 
 
 export default function AdminPage() {
@@ -17,6 +18,7 @@ export default function AdminPage() {
             <div className="admin__content">
                 <Switch>
                     <Route path={`${url}/orders`}><AdminOrder/></Route>
+                    <Route path={`${url}/models`}><ModelsPage/></Route>
                     <Route path={`${url}/unknown`}><AdminFault/></Route>
                 </Switch>
             </div>

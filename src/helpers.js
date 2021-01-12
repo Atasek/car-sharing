@@ -58,3 +58,13 @@ export function getDurationOfLease(dateTo, dateFrom) {
 }
 
 export const cn = withNaming({ n: '', e: '__', m: '_', v: '_' });
+
+export function filterRepeatedOptions(options) {
+    return options.reduce((carTypes, carItem) => {
+        const isRepeatedOption = carTypes.find((item) => item.value === carItem.value);
+        if (!isRepeatedOption) {
+            carTypes.push(carItem)
+        }
+        return carTypes
+    }, [])
+}

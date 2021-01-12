@@ -20,7 +20,7 @@ export function AdminBar(){
             </div>
             <div className="menu__card">
                 <PostIcon/>
-                <div className="menu__card-title">Список авто</div>
+                <div className="menu__card-title"><Link to="/admin/models">Список авто</Link></div>
             </div>
 
             <div className="menu__card">
@@ -29,5 +29,4 @@ export function AdminBar(){
             </div>
         </div>
     </div>
-
 }

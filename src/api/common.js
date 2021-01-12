@@ -50,3 +50,17 @@ export function getCarImage(srcPath) {
     return (srcPath.includes('base64') && srcPath) ||
         `${CORS_URL}http://api-factory.simbirsoft1.com${srcPath}`
 }
+
+export function getPaginationParams(page, limit, filters) {
+    const params = {
+        page,
+        limit
+    };
+    // Удаляем пустые фильтры, чтобы избежать 500 с сервера
+    Object.keys(filters).forEach(key => {
+        if (filters[key]) {
+            params[key] = filters[key];
+        }
+    });
+    return new URLSearchParams(params)
+}
