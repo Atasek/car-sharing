@@ -1,16 +1,18 @@
-.fault{
+.fault {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  &__code{
+
+  &__code {
     font-style: normal;
     font-size: 75px;
     line-height: 88px;
     color: #cacedb;
   }
-  &__message{
+
+  &__message {
     font-style: normal;
     font-weight: 400;
     text-align: center;
@@ -19,7 +21,8 @@
     letter-spacing: -1px;
     color: #3d5170;
   }
-  &__advice{
+
+  &__advice {
     color: #818ea3;
     font-size: 20px;
     line-height: 23px;

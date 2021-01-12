@@ -1,33 +1,36 @@
-.admin-header{
+.admin-header {
   display: flex;
   height: 68px;
   padding: 0 32px;
-  width: 100%;
   background: #fff;
-  box-shadow: 0 2.5px 9.5px rgba(90,97,105,.12);
+  box-shadow: 0 2.5px 9.5px rgba(90, 97, 105, .12);
   align-items: center;
-  &__search{
+
+  &__search {
     display: flex;
     flex-grow: 1;
     align-items: center;
 
 
-    &-input{
+    &-input {
       border: none;
       margin-left: 10px;
     }
   }
-  &__user{
+
+  &__user {
     display: flex;
     align-items: center;
-    .user__avatar{
+
+    .user__avatar {
       cursor: pointer;
       height: 40px;
       width: 40px;
       margin-left: 25px;
       margin-right: 15px;
     }
-    .user__drop{
+
+    .user__drop {
       color: #5a6169;
       background-color: #fff;
       font-style: normal;
@@ -37,7 +40,8 @@
       border: none;
       cursor: pointer;
     }
-    .user__name{
+
+    .user__name {
       color: #5a6169;
       font-style: normal;
       font-weight: 400;
@@ -47,7 +51,8 @@
       cursor: pointer;
     }
   }
-  .notifications{
+
+  .notifications {
     display: flex;
     align-items: center;
     justify-content: center;
