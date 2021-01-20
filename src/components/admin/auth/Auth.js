@@ -34,17 +34,21 @@ export default function Auth() {
                 <form className={authCn('form')}>
                     <div className={authCn('title')}>Вход</div>
                     <div className={authCn('fields')}>
-                        <AdminCustomInput
-                            label="Почта"
-                            onChange={setEmail}
-                            value={email}
-                        />
+                        <div className={authCn('field')}>
+                            <AdminCustomInput
+                                label="Почта"
+                                onChange={setEmail}
+                                value={email}
+                            />
+                        </div>
+                        <div className={authCn('field')}>
                         <AdminCustomInput
                             type="password"
                             label="Пароль"
                             onChange={setPassword}
                             value={password}
                         />
+                        </div>
                     </div>
                     <div className={authCn('footer')}>
                         <button className={authCn('get-access')}>Запросить доступ</button>

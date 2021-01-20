@@ -37,8 +37,9 @@ function getLocalGeneratedToken() {
 }
 
 export function saveAuthorization(token, expiresIn) {
+    const expiresInSeconds = expiresIn * 1000;
     localStorage.setItem('token', token);
-    localStorage.setItem('expiresIn', Date.now() + expiresIn);
+    localStorage.setItem('expiresIn', String(Date.now() + expiresInSeconds));
 }
 
 export function isAuthorised() {
