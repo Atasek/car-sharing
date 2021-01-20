@@ -26,6 +26,15 @@ export async function getDistributionPoints() {
     return await response.json();
 }
 
+async function getCategories() {
+    const url = `${BASE_URL}category`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
 export async function getRate() {
     const url = `${BASE_URL}rate`;
     const response = await fetch(url, {
@@ -69,6 +78,15 @@ export async function getCitiesForSelect() {
     return responseCities.data.map((city) => ({
         value: city.id,
         label: city.name
+    }));
+}
+
+export async function getCategoriesForSelect() {
+    const responseCategories = await getCategories();
+    return responseCategories.data.map((category) => ({
+        value: category.id,
+        label: category.name,
+        description: category.description,
     }));
 }
 

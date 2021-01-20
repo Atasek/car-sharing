@@ -1,9 +1,10 @@
+@import 'src/styles/colors';
+
 .admin-custom-input{
-  &__input{
+  &__input {
     width: 341.5px;
     height: 29px;
-    margin: 0 0 6px;
-    border: 0.5px solid #BECAD6;
+    border: 0.5px solid $admin-gray2;
     box-sizing: border-box;
     border-radius: 3px;
   }
@@ -15,6 +16,5 @@
     color: #495057;
     align-self: start;
     margin-bottom: 8px;
-
   }
 }

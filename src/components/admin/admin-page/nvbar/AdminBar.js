@@ -16,13 +16,12 @@ export function AdminBar(){
         <div className="navbar__menu menu">
             <div className="menu__card">
                 <BlogIcon/>
-                <div className="menu__card-title">Карточка автомобиля</div>
+                <div className="menu__card-title"><Link to="/admin/car">Карточка автомобиля</Link></div>
             </div>
             <div className="menu__card">
                 <PostIcon/>
                 <div className="menu__card-title"><Link to="/admin/models">Список авто</Link></div>
             </div>
-
             <div className="menu__card">
                 <AddIcon/>
                 <div className="menu__card-title"><Link to="/admin/orders">Заказы</Link></div>

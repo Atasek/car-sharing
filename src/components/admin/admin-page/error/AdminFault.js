@@ -1,4 +1,4 @@
-import {AdminCustomButton} from "../../components/AdminCustomButton";
+import {AdminCustomButton} from "../../components/admin-custom-button/AdminCustomButton";
 import React from "react";
 import {cn} from "../../../../helpers";
 import "./AdminFault.scss";

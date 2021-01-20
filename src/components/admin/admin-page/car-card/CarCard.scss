@@ -1,0 +1,105 @@
+@import 'src/styles/colors';
+
+.car-card {
+  &__title {
+    font-size: 29px;
+    line-height: 33px;
+    color: $admin-title;
+    font-family: Helvetica;
+    margin: 0 0 29px 0;
+  }
+  &__content-wrapper {
+    display: flex;
+    height: 100%;
+    padding-top: 30px;
+  }
+  &__main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    background: white;
+    box-shadow: 0 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+  }
+  &__image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 35px 50px 22px 50px;
+  }
+  &__car-image {
+    width: 243.5px;
+    height: 110px;
+  }
+  &__name {
+    font-size: 24.5px;
+    line-height: 28px;
+    color: $admin-title;
+    margin: 10px 0 4px 0;
+  }
+  &__categoryId-title {
+    font-size: 12.5px;
+    line-height: 14px;
+    color: #818EA3;
+    text-align: center;
+    margin: 0 0 10px 0;
+  }
+  &__progress {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 24px;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+  }
+  &__description {
+    padding: 22px 27px 45px 21px;
+  }
+  &__form-wrapper {
+    width: 100%;
+    height: fit-content;
+    background: white;
+    box-shadow: 0 2px 4px rgba(90, 97, 105, 0.12);
+    border-radius: 9px;
+    margin: 0 0 0 28px;
+    padding: 20px 18px;
+  }
+  &__sub-title {
+    font-weight: 500;
+    font-size: 17.5px;
+    line-height: 21px;
+    color: #3D5170;
+    margin: 0 0 38px 0;
+  }
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 200px 0;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__save-and-cancel-buttons {
+    display: flex;
+  }
+  &__cancel-button {
+    margin: 0 0 0 12px;
+  }
+  &__field {
+    height: 49px;
+    width: 320px;
+    margin: 0 20px 28px 0;
+  }
+  &__label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #495057;
+    align-self: start;
+    margin-bottom: 8px;
+  }
+}
+

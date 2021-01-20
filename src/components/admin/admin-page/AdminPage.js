@@ -7,6 +7,7 @@ import {AdminFooter} from "./footer/AdminFooter";
 import {AdminFault} from "./error/AdminFault";
 import {AdminOrder} from "./orders/AdminOrder";
 import {ModelsPage} from "./models/ModelsPage";
+import {CarCard} from "./car-card/CarCard";
 
 
 export default function AdminPage() {
@@ -18,6 +19,8 @@ export default function AdminPage() {
             <div className="admin__content">
                 <Switch>
                     <Route exact path={`${url}`}><AdminFault/></Route>
+                    <Route path={`${url}/car`}><CarCard/></Route>
+                    <Route path={`${url}/car/:id`}><CarCard/></Route>
                     <Route path={`${url}/orders`}><AdminOrder/></Route>
                     <Route path={`${url}/models`}><ModelsPage/></Route>
                     <Route path={`${url}/unknown`}><AdminFault/></Route>

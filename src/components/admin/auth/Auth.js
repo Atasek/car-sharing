@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import "./Auth.scss"
 import {ReactComponent as LogoIcon} from "../../../img/LogoIcon.svg";
 import {auth} from "../../../api/admin";
-import {AdminCustomInput} from "../components/AdminCustomInput";
+import {AdminCustomInput} from "../components/admin-custom-input/AdminCustomInput";
 import { useHistory } from "react-router-dom";
-import {AdminCustomButton} from "../components/AdminCustomButton";
+import {AdminCustomButton} from "../components/admin-custom-button/AdminCustomButton";
 import {saveAuthorization} from "../../../api/common";
 import {cn} from "../../../helpers";
 
@@ -38,7 +38,6 @@ export default function Auth() {
                             label="Почта"
                             onChange={setEmail}
                             value={email}
-
                         />
                         <AdminCustomInput
                             type="password"
