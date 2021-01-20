@@ -1,6 +1,7 @@
 @import 'src/styles/colors';
 
 .car-card {
+  position: relative;
   &__title {
     font-size: 29px;
     line-height: 33px;
