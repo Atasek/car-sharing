@@ -1,5 +1,5 @@
 import {cn} from "../../../../helpers";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import "./CarCard.scss";
 import {AdminCustomButton} from "../../components/admin-custom-button/AdminCustomButton";
 import {useHistory, useParams} from "react-router-dom";
@@ -78,100 +78,142 @@ export const categoriesStyles = {
     )
 }
 
+const CAR_ACTION_TYPES = {
+    RESET: 'reset',
+    ADD_COLOR: 'addColor',
+    REMOVE_COLOR: 'removeColor',
+    FULL_CAR: 'fullCar',
+    NAME: 'name',
+    PRICE_MIN: 'priceMin',
+    PRICE_MAX: 'priceMax',
+    DESCRIPTION: 'description',
+    CATEGORY_ID: 'categoryId',
+    THUMBNAIL: 'thumbnail',
+}
+
+function reduceCar(state, action) {
+    switch (action.type) {
+        case CAR_ACTION_TYPES.NAME:
+            return {...state, [CAR_ACTION_TYPES.NAME]: action.payload};
+        case CAR_ACTION_TYPES.PRICE_MIN:
+            return {...state, [CAR_ACTION_TYPES.PRICE_MIN]: action.payload};
+        case CAR_ACTION_TYPES.PRICE_MAX:
+            return {...state, [CAR_ACTION_TYPES.PRICE_MAX]: action.payload};
+        case CAR_ACTION_TYPES.ADD_COLOR:
+            return {...state, colors: [...state.colors, action.payload]};
+        case CAR_ACTION_TYPES.REMOVE_COLOR:
+            return {...state, colors: state.colors.filter(currentColor => currentColor !== action.payload)};
+        case CAR_ACTION_TYPES.DESCRIPTION:
+            return {...state, [CAR_ACTION_TYPES.DESCRIPTION]: action.payload};
+        case CAR_ACTION_TYPES.THUMBNAIL:
+            return {...state, [CAR_ACTION_TYPES.THUMBNAIL]: action.payload};
+        case CAR_ACTION_TYPES.CATEGORY_ID:
+            return {...state, [CAR_ACTION_TYPES.CATEGORY_ID]: action.payload};
+        case CAR_ACTION_TYPES.FULL_CAR:
+            return action.payload;
+        case CAR_ACTION_TYPES.RESET:
+            return initialCar;
+        default:
+            return new Error('Неизвестный action type');
+    }
+}
+
+const initialCar = {
+    name: '',
+    priceMin: '',
+    priceMax: '',
+    description: '',
+    categoryId: {
+        label: '',
+        description: '',
+        value: null,
+    },
+    colors: [],
+    thumbnail: null,
+}
+
 export function CarCard() {
     const carCardCn = cn('car-card');
     const history = useHistory()
     const {id} = useParams();
-    const [name, setName] = useState('');
-    const [priceMin, setPriceMin] = useState('');
-    const [priceMax, setPriceMax] = useState('');
-    const [description, setDescription] = useState('');
-    const [categoryId, setCategoryId] = useState({
-        label: '',
-        value: null,
-    });
-    const [colors, setColors] = useState([]);
-    const [thumbnail, setThumbnail] = useState(null);
+
+    const [car, dispatchCar] = useReducer(reduceCar, initialCar);
     const [progressPercent, setProgressPercent] = useState(0);
     const [categoryIdOptions, setCategoryIdOptions] = useState(null);
     const [isAlertShown, setIsAlertShown] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
-        let currentProgress = 0;
-        const fulledInFields = [
-            !!name,
-            !!description,
-            !!priceMin,
-            !!priceMax,
-            !!thumbnail,
-            !!categoryId.value,
-            colors.length > 0,
-        ]
-        fulledInFields.filter(field => field).forEach(() => {
-            currentProgress += 100 / fulledInFields.length
-        })
-        setProgressPercent(Math.trunc(currentProgress))
-    }, [name, description, categoryId, colors, thumbnail, priceMin, priceMax])
+        function calculateProgress() {
+            const fields = [
+                !!car.name,
+                !!car.description,
+                !!car.priceMin,
+                !!car.priceMax,
+                !!car.thumbnail,
+                !!car.categoryId.value,
+                car.colors.length > 0,
+            ]
+            const fulledInFieldsCount = fields.filter(field => field).length;
+            if (fulledInFieldsCount === 0) {
+                setProgressPercent(0);
+            } else {
+                setProgressPercent(Math.trunc( (fulledInFieldsCount / fields.length ) * 100));
+            }
+        }
+
+        calculateProgress();
+    }, [car])
 
     useEffect(() => {
+        let mounted = true;
         async function loadCategories() {
             const result = await getCategoriesForSelect();
-            setCategoryIdOptions(result);
+            if (mounted) {
+                setCategoryIdOptions(result);
+            }
         }
 
         loadCategories();
+        return () => mounted = false;
     }, [])
 
     useEffect(() => {
         async function loadCar() {
-            const car = (await getCarByID(id)).data;
-            setName(car.name);
-            setPriceMin(car.priceMin);
-            setPriceMax(car.priceMax);
-            setDescription(car.description);
-            setCategoryId({
-                label: car.categoryId.name,
-                value: car.categoryId.id,
-                description: car.categoryId.description
-            });
-            setColors(car.colors);
-            setThumbnail(car.thumbnail);
+            const {name, priceMin, priceMax, description, colors, thumbnail, categoryId} = (await getCarByID(id)).data;
+            dispatchCar({type: CAR_ACTION_TYPES.FULL_CAR, payload: {
+                name,
+                priceMin,
+                priceMax,
+                description,
+                colors,
+                thumbnail,
+                categoryId: {
+                    label: categoryId.name,
+                    value: categoryId.id,
+                    description: categoryId.description
+                },
+            }});
         }
 
         if (id) {
             loadCar();
-        } else {
-            setName('');
-            setPriceMin('');
-            setPriceMax('');
-            setDescription('');
-            setCategoryId({
-                label: '',
-                value: null,
-            });
-            setColors([]);
-            setThumbnail(null);
         }
     }, [id])
 
     async function deleteCard() {
         await deleteCar(id);
+        dispatchCar({type: CAR_ACTION_TYPES.RESET})
         history.push('/admin/car');
     }
 
     async function saveCard() {
         const summary = {
-            name,
-            priceMin,
-            priceMax,
-            description,
-            colors,
-            thumbnail,
+            ...car,
             categoryId: {
-                name: categoryId.label,
-                id: categoryId.value,
-                description: categoryId.description,
+                name: car.categoryId.label,
+                id: car.categoryId.value,
+                description: car.categoryId.description,
             },
         }
         if (id) {
@@ -196,12 +238,12 @@ export function CarCard() {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(file);
         fileReader.onload = () => {
-            setThumbnail({
-                mimetype: file.type,
-                originalname: file.name,
-                path: fileReader.result,
-                size: file.size,
-            });
+            dispatchCar({type: CAR_ACTION_TYPES.THUMBNAIL, payload: {
+                    mimetype: file.type,
+                    originalname: file.name,
+                    path: fileReader.result,
+                    size: file.size,
+                }});
         }
     }
 
@@ -222,22 +264,22 @@ export function CarCard() {
                 <div className={carCardCn('main-info')}>
                     <div className={carCardCn('image-wrapper')}>
                         <img
-                            src={thumbnail ? getCarImage(thumbnail.path) : CatStubImage}
+                            src={car.thumbnail ? getCarImage(car.thumbnail.path) : CatStubImage}
                             alt="car model"
                             className={carCardCn('car-image')}
                             crossOrigin="anonymous"
                             referrerPolicy="origin"
                         />
-                        {name && <p className={carCardCn('name')}>{name}</p>}
-                        {categoryId.value && <p className={carCardCn('categoryId-title')}>{categoryId.description}</p>}
+                        {car.name && <p className={carCardCn('name')}>{car.name}</p>}
+                        {car.categoryId.value && <p className={carCardCn('categoryId-title')}>{car.categoryId.description}</p>}
                         <AdminCustomFileInput onChange={uploadFile}/>
                     </div>
                     <ProgressBar percent={progressPercent}/>
                     <div className={carCardCn('description')}>
                         <AdminCustomTextarea
                             label="Описание"
-                            value={description}
-                            onChange={setDescription}
+                            value={car.description}
+                            onChange={description => dispatchCar({type: CAR_ACTION_TYPES.DESCRIPTION, payload: description})}
                         />
                     </div>
                 </div>
@@ -247,16 +289,16 @@ export function CarCard() {
                         <div className={carCardCn('field')}>
                             <AdminCustomInput
                                 label="Модель автомобиля"
-                                onChange={setName}
-                                value={name}
+                                onChange={name => dispatchCar({type: CAR_ACTION_TYPES.NAME, payload: name})}
+                                value={car.name}
                                 width="320px"
                             />
                         </div>
                         <div className={carCardCn('field')}>
                             <AdminCustomInput
                                 label="Минимальная стоимость"
-                                onChange={setPriceMin}
-                                value={priceMin}
+                                onChange={priceMin => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MIN, payload: priceMin})}
+                                value={car.priceMin}
                                 type="number"
                                 width="320px"
                             />
@@ -264,8 +306,8 @@ export function CarCard() {
                         <div className={carCardCn('field')}>
                             <AdminCustomInput
                                 label="Максимальная стоимость"
-                                onChange={setPriceMax}
-                                value={priceMax}
+                                onChange={priceMax => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MAX, payload: priceMax})}
+                                value={car.priceMax}
                                 type="number"
                                 width="320px"
                             />
@@ -275,20 +317,20 @@ export function CarCard() {
                             <CustomSelect
                                 styles={categoriesStyles}
                                 placeholder="Тип автомобиля"
-                                onChange={setCategoryId}
+                                onChange={categoryId => dispatchCar({type: CAR_ACTION_TYPES.CATEGORY_ID, payload: categoryId})}
+                                value={car.categoryId}
                                 isDisabled={!categoryIdOptions}
                                 options={categoryIdOptions}
-                                value={categoryId}
                                 isClearable="false"
                             />
                         </div>
                         <div className={carCardCn('field')}>
                             <AdminPicker
                                 label="Доступные цвета"
-                                values={colors}
+                                values={car.colors}
                                 width="283px"
-                                onAdd={(color) => setColors([...colors, color])}
-                                onRemove={(color) => setColors(colors.filter(currentColor => currentColor !== color))}
+                                onAdd={(color) => dispatchCar({type: CAR_ACTION_TYPES.ADD_COLOR, payload: color})}
+                                onRemove={(color) => dispatchCar({type: CAR_ACTION_TYPES.REMOVE_COLOR, payload: color})}
                             />
                         </div>
                     </div>
