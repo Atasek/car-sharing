@@ -23,6 +23,10 @@ export function AdminBar(){
                 <div className="menu__card-title"><Link to="/admin/models">Список авто</Link></div>
             </div>
             <div className="menu__card">
+                <PostIcon/>
+                <div className="menu__card-title"><Link to="/admin/cities">Список городов</Link></div>
+            </div>
+            <div className="menu__card">
                 <AddIcon/>
                 <div className="menu__card-title"><Link to="/admin/orders">Заказы</Link></div>
             </div>

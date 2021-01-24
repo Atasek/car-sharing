@@ -82,6 +82,15 @@ export async function getCarByID(carID) {
     return await response.json();
 }
 
+export async function getCityByID(cityID) {
+    const url = `${BASE_URL}city/${cityID}`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
 export async function getCitiesForSelect() {
     const responseCities = await getCities();
     return responseCities.data.map((city) => ({

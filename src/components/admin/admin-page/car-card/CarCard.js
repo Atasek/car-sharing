@@ -134,7 +134,7 @@ const initialCar = {
 
 export function CarCard() {
     const carCardCn = cn('car-card');
-    const history = useHistory()
+    const history = useHistory();
     const {id} = useParams();
 
     const [car, dispatchCar] = useReducer(reduceCar, initialCar);

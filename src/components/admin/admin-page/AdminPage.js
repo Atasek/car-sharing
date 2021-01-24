@@ -8,6 +8,8 @@ import {AdminFault} from "./error/AdminFault";
 import {AdminOrder} from "./orders/AdminOrder";
 import {ModelsPage} from "./models/ModelsPage";
 import {CarCard} from "./car-card/CarCard";
+import {Cities} from "./cities/Cities";
+import {CityCard} from "./city-card/CityCard";
 
 
 export default function AdminPage() {
@@ -23,6 +25,9 @@ export default function AdminPage() {
                     <Route exact path={`${url}/car/:id`}><CarCard/></Route>
                     <Route path={`${url}/orders`}><AdminOrder/></Route>
                     <Route path={`${url}/models`}><ModelsPage/></Route>
+                    <Route path={`${url}/cities`}><Cities/></Route>
+                    <Route exact path={`${url}/city`}><CityCard/></Route>
+                    <Route exact path={`${url}/city/:id`}><CityCard/></Route>
                     <Route path={`${url}/unknown`}><AdminFault/></Route>
                 </Switch>
             </div>
