@@ -1,0 +1,17 @@
+.admin-textarea {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 500;
+    color: #868e96;
+    margin: 0 0 13px 0;
+  }
+  &__textarea {
+    height: 86px;
+    font-size: 13px;
+    line-height: 19px;
+    color: #5a6169;
+  }
+}

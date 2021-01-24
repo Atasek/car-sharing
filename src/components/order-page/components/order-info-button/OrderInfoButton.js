@@ -21,6 +21,7 @@ export default function OrderInfoButton(props) {
                     break;
                 case STEPS.SUMMARY:
                     title = 'Заказать';
+                    break;
                 default:
                     break;
             }

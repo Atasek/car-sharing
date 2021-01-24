@@ -1,26 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './Main';
+import Main from './components/mainPageComponents/Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
 import Order from "./components/order-page/Order";
-import {
-    BrowserRouter as Router,
-    Route
-} from "react-router-dom";
-
+import Admin from "./components/admin/Admin";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router >
-                    <Route path="/car-sharing/order/:orderId?" component={Order}/>
-            <Route
-                path='/car-sharing/order/finished/:orderId?'
-                render={() => <Order isOrderConfirmed/>}
-            />
-                    <Route exact path="/car-sharing" component={Main}/>
-        </Router>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <Switch>
+                <Route exact path='/'>
+                    <Main/>
+                </Route>
+                <Route path='/admin'>
+                    <Admin/>
+                </Route>
+                <Route exact path='/order'>
+                    <Order/>
+                </Route>
+                <Route exact path='/order/:id'>
+                    <Order/>
+                </Route>
+            </Switch>
+        </BrowserRouter>
 
     </React.StrictMode>,
     document.getElementById('root')

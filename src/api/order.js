@@ -26,6 +26,15 @@ export async function getDistributionPoints() {
     return await response.json();
 }
 
+async function getCategories() {
+    const url = `${BASE_URL}category`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
 export async function getRate() {
     const url = `${BASE_URL}rate`;
     const response = await fetch(url, {
@@ -64,11 +73,38 @@ export async function getOrderByID(orderID) {
     return await response.json();
 }
 
+export async function getCarByID(carID) {
+    const url = `${BASE_URL}car/${carID}`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
+export async function getCityByID(cityID) {
+    const url = `${BASE_URL}city/${cityID}`;
+    const response = await fetch(url, {
+        headers: BASE_HEADERS,
+    });
+
+    return await response.json();
+}
+
 export async function getCitiesForSelect() {
     const responseCities = await getCities();
     return responseCities.data.map((city) => ({
         value: city.id,
         label: city.name
+    }));
+}
+
+export async function getCategoriesForSelect() {
+    const responseCategories = await getCategories();
+    return responseCategories.data.map((category) => ({
+        value: category.id,
+        label: category.name,
+        description: category.description,
     }));
 }
 
@@ -81,3 +117,5 @@ export async function getDistributionPointsForSelect() {
         address: distributionPoint.address,
     }));
 }
+
+

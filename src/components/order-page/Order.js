@@ -7,40 +7,44 @@ import OrderInfo from "./order-info/OrderInfo";
 import OrderStatus from "./breadcrumb/Breadcrumb";
 import {getOrderByID, getOrderStatus, saveOrder} from "../../api/order";
 import {convertPriceNumber, getPrice} from "../../helpers";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export default function Order(props) {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const [order, setOrder] = useState({});
     const [isModalShown, setModalShown] = useState(false);
     const [isOrderConfirmed, setOrderConfirmed] = useState(false);
-    const [orderId, setOrderId] = useState(props.match.params.orderId || null);
+    let { id } = useParams();
     const history = useHistory();
 
     useEffect(() => {
-        if (orderId) {
+        async function initConfirmedOrder() {
+            const {carId: car,
+                isFullTank,
+                isNeedChildChair,
+                isRightWheel,
+                ...order
+            } = (await getOrderByID(id)).data;
+            const preparedOrder = {
+                car,
+                isFullTank,
+                isNeedChildChair,
+                isRightWheel,
+                color: car.color,
+                dateFrom: new Date(order.dateFrom),
+                dateTo: new Date(order.dateTo),
+                city: {label: order.cityId.name},
+                distributionPoint: {address: order.pointId.address},
+                rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
+            }
+            setOrder(preparedOrder);
+            setOrderConfirmed(true);
+            nextStep(STEPS.SUMMARY);
+        }
+        if (id) {
             initConfirmedOrder();
         }
-    }, [orderId])
-
-    async function initConfirmedOrder() {
-        const order = (await getOrderByID(orderId)).data;
-        const preparedOrder = {
-            car: order.carId,
-            dateFrom: new Date(order.dateFrom),
-            dateTo: new Date(order.dateTo),
-            color: order.carId.color,
-            city: {label: order.cityId.name},
-            distributionPoint: {address: order.pointId.address},
-            rate: {rateTypeId: {name: order.rateId.rateTypeId.name}},
-            isFullTank: order.isFullTank,
-            isNeedChildChair: order.isNeedChildChair,
-            isRightWheel: order.isRightWheel,
-        }
-        setOrder(preparedOrder);
-        setOrderConfirmed(true);
-        nextStep(STEPS.SUMMARY);
-    }
+    }, [id])
 
     async function confirmOrder() {
         const price = convertPriceNumber(getPrice(order));
@@ -61,9 +65,7 @@ export default function Order(props) {
         }
         const confirmedOrder = await saveOrder(preparedOrder);
         const confirmedOrderID = confirmedOrder.data.id;
-        history.push(`/car-sharing/order/${confirmedOrderID}`);
-        setOrderId(confirmedOrderID);
-        setOrderConfirmed(true);
+        history.push(`/order/${confirmedOrderID}`);
         setModalShown(false);
     }
 

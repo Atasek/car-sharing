@@ -1,0 +1,32 @@
+.admin {
+  overflow: auto;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f5f6f8;
+  &__content{
+    padding: 32px;
+    flex: 1;
+  }
+  &__description{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+p {
+  margin: 0 0 0 0;
+}
+
+*, ::after, ::before {
+  box-sizing: initial;
+}
+
+dl, ol, ul {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}

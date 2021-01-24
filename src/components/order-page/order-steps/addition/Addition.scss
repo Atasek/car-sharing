@@ -4,7 +4,8 @@
   margin: 32px 0 0 64px;
   &__item {
     margin: 0 0 32px 0;
-
+    font-size: 14px;
+    line-height: 16px;
   }
   &__row {
     display: flex;
@@ -17,14 +18,10 @@
   }
   &__title {
     font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
     color: $black;
   }
   &__date-title {
     font-weight: 300;
-    font-size: 14px;
-    line-height: 25px;
     margin: 0 3px 0 0;
     &_start-date {
       margin: 0 3px 0 9px;

@@ -1,4 +1,5 @@
 import {STEPS} from "./components/order-page/step-switcher/StepSwitcher";
+import {withNaming} from "@bem-react/classname";
 
 export function formatPriceNumber(bigNumber) {
     return Number(bigNumber).toLocaleString().replace(/,/g, ' ')
@@ -54,4 +55,16 @@ export function getDurationOfLease(dateTo, dateFrom) {
     const diffTime = Math.abs(dateTo - dateFrom);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
+}
+
+export const cn = withNaming({ n: '', e: '__', m: '_', v: '_' });
+
+export function filterRepeatedOptions(options) {
+    return options.reduce((carTypes, carItem) => {
+        const isRepeatedOption = carTypes.find((item) => item.value === carItem.value);
+        if (!isRepeatedOption) {
+            carTypes.push(carItem)
+        }
+        return carTypes
+    }, [])
 }
