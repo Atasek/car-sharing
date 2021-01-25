@@ -6,7 +6,7 @@
 }
 
 .carousel {
-  width: 688px;
+  width: 50%;
   height: 100%;
   z-index: 1;
 
@@ -36,7 +36,6 @@
   }
 
   &__img {
-    width: 688px;
     height: 100vh;
   }
 
@@ -102,6 +101,7 @@
   font-size: 24px;
   line-height: 90%;
   color: #eee;
+  margin: 8px 0 32px 0;
 }
 
 .carousel-control-prev:hover,
