@@ -1,31 +1,17 @@
-.admin{
+@import "src/styles/colors";
 
-  &__navbar {
-    z-index: 1;
-    width: 285px;
-    background: #fff;
-    box-shadow: 0 1px 75px rgba(90, 97, 105, .11), 0 2px 4px rgba(90, 97, 105, .12), 0 7.5px 11px rgba(90, 97, 105, .1), 0 3.5px 17.5px rgba(165, 182, 201, .1);
-
-    .navbar__logo {
-      height: 68px;
-      border-bottom: solid 1px #e1e5eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .logo__title {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 18px;
-        color: #3d5170;
-        margin-left: 10px;
-      }
-    }
+.admin-navbar {
+  z-index: 1;
+  width: 285px;
+  background: white;
+  box-shadow: 0 1px 75px rgba(90, 97, 105, .11), 0 2px 4px rgba(90, 97, 105, .12), 0 7.5px 11px rgba(90, 97, 105, .1), 0 3.5px 17.5px rgba(165, 182, 201, .1);
+  &__logo {
+    height: 68px;
+    border-bottom: solid 1px #e1e5eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-}
-
-.menu {
   &__card {
     display: flex;
     height: 60px;
@@ -35,14 +21,31 @@
     background: #fff;
     color: #3d5170;
     border-bottom: solid 1px #e1e5eb;
-
-    &-title {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 15px;
-      line-height: 17px;
-      margin-left: 12px;
+    svg {
+      path {
+        fill: #CACEDB;
+      }
     }
-
+    &_active {
+      border-left: solid 4px $blue;
+      svg {
+        path {
+          fill: $blue;
+        }
+      }
+    }
+  }
+  &__card-title {
+    font-size: 15px;
+    line-height: 17px;
+    margin-left: 12px;
+  }
+  &__logo-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: $admin-title;
+    margin-left: 10px;
   }
 }

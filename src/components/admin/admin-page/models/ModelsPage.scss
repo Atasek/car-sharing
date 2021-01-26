@@ -34,3 +34,11 @@
     margin: 100px auto;
   }
 }
+
+@media (max-width: 768px) {
+  .models {
+    &__list {
+      overflow-x: scroll;
+    }
+  }
+}

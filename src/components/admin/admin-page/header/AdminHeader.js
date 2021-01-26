@@ -15,7 +15,7 @@ export function AdminHeader() {
         <div className="admin-header__notifications notifications">
             <NotificationIcon/>
         </div>
-        <div className="admin-header__user">
+        <div className="admin-header__user user">
             <div className="user__avatar"><AvatarIcon/></div>
             <div className="user__name">Admin</div>
             <div className="user__drop">

@@ -21,6 +21,9 @@ export const categoriesStyles = {
             ...styles,
             width: "320px",
             margin: "0 20px 28px 0",
+            '@media(max-width: 768px)': {
+                width: "100%",
+            }
         }
     ),
     control: (styles) => (
@@ -142,6 +145,14 @@ export function CarCard() {
     const [categoryIdOptions, setCategoryIdOptions] = useState(null);
     const [isAlertShown, setIsAlertShown] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
 
     useEffect(() => {
         function calculateProgress() {
@@ -252,6 +263,14 @@ export function CarCard() {
         setIsAlertShown(true);
     }
 
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    function isMobile() {
+        return width <= 768;
+    }
+
     return (
         <div className={carCardCn()}>
             <Alert
@@ -284,54 +303,56 @@ export function CarCard() {
                     </div>
                 </div>
                 <div className={carCardCn('form-wrapper')}>
-                    <div className={carCardCn('sub-title')}>Настройки автомобиля</div>
-                    <div className={carCardCn('form')}>
-                        <div className={carCardCn('field')}>
-                            <AdminCustomInput
-                                label="Модель автомобиля"
-                                onChange={name => dispatchCar({type: CAR_ACTION_TYPES.NAME, payload: name})}
-                                value={car.name}
-                                width="320px"
-                            />
-                        </div>
-                        <div className={carCardCn('field')}>
-                            <AdminCustomInput
-                                label="Минимальная стоимость"
-                                onChange={priceMin => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MIN, payload: priceMin})}
-                                value={car.priceMin}
-                                type="number"
-                                width="320px"
-                            />
-                        </div>
-                        <div className={carCardCn('field')}>
-                            <AdminCustomInput
-                                label="Максимальная стоимость"
-                                onChange={priceMax => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MAX, payload: priceMax})}
-                                value={car.priceMax}
-                                type="number"
-                                width="320px"
-                            />
-                        </div>
-                        <div className={carCardCn('field')}>
-                            <label className={carCardCn('label')}>Тип автомобиля</label>
-                            <CustomSelect
-                                styles={categoriesStyles}
-                                placeholder="Тип автомобиля"
-                                onChange={categoryId => dispatchCar({type: CAR_ACTION_TYPES.CATEGORY_ID, payload: categoryId})}
-                                value={car.categoryId}
-                                isDisabled={!categoryIdOptions}
-                                options={categoryIdOptions}
-                                isClearable="false"
-                            />
-                        </div>
-                        <div className={carCardCn('field')}>
-                            <AdminPicker
-                                label="Доступные цвета"
-                                values={car.colors}
-                                width="283px"
-                                onAdd={(color) => dispatchCar({type: CAR_ACTION_TYPES.ADD_COLOR, payload: color})}
-                                onRemove={(color) => dispatchCar({type: CAR_ACTION_TYPES.REMOVE_COLOR, payload: color})}
-                            />
+                    <div>
+                        <div className={carCardCn('sub-title')}>Настройки автомобиля</div>
+                        <div className={carCardCn('form')}>
+                            <div className={carCardCn('field')}>
+                                <AdminCustomInput
+                                    label="Модель автомобиля"
+                                    onChange={name => dispatchCar({type: CAR_ACTION_TYPES.NAME, payload: name})}
+                                    value={car.name}
+                                    width={isMobile() ? '100%' : "320px"}
+                                />
+                            </div>
+                            <div className={carCardCn('field')}>
+                                <AdminCustomInput
+                                    label="Минимальная стоимость"
+                                    onChange={priceMin => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MIN, payload: priceMin})}
+                                    value={car.priceMin}
+                                    type="number"
+                                    width={isMobile() ? '100%' : "320px"}
+                                />
+                            </div>
+                            <div className={carCardCn('field')}>
+                                <AdminCustomInput
+                                    label="Максимальная стоимость"
+                                    onChange={priceMax => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MAX, payload: priceMax})}
+                                    value={car.priceMax}
+                                    type="number"
+                                    width={isMobile() ? '100%' : "320px"}
+                                />
+                            </div>
+                            <div className={carCardCn('field')}>
+                                <label className={carCardCn('label')}>Тип автомобиля</label>
+                                <CustomSelect
+                                    styles={categoriesStyles}
+                                    placeholder="Тип автомобиля"
+                                    onChange={categoryId => dispatchCar({type: CAR_ACTION_TYPES.CATEGORY_ID, payload: categoryId})}
+                                    value={car.categoryId}
+                                    isDisabled={!categoryIdOptions}
+                                    options={categoryIdOptions}
+                                    isClearable="false"
+                                />
+                            </div>
+                            <div className={carCardCn('field', {"responsive-height": true})}>
+                                <AdminPicker
+                                    label="Доступные цвета"
+                                    values={car.colors}
+                                    width="283px"
+                                    onAdd={(color) => dispatchCar({type: CAR_ACTION_TYPES.ADD_COLOR, payload: color})}
+                                    onRemove={(color) => dispatchCar({type: CAR_ACTION_TYPES.REMOVE_COLOR, payload: color})}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className={carCardCn('buttons')}>

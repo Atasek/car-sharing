@@ -1,4 +1,4 @@
-.admin__button{
+.admin-button {
   width: 110px;
   height: 29px;
   font-style: normal;
@@ -16,4 +16,10 @@
   box-sizing: border-box;
   display: flex;
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .admin-button {
+    width: 80px;
+  }
 }
