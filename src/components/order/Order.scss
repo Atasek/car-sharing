@@ -76,6 +76,7 @@
     background: linear-gradient(90deg, $main-accent 2.61%,#039f67 112.6%);
     &_cancel {
       background: linear-gradient(90deg, #493013 0%, #7B0C3B 100%);
+      margin: 0 0 0 5px;
     }
   }
 }
