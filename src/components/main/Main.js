@@ -2,7 +2,7 @@ import React from 'react'
 import './Main.scss';
 import LeftSidebar from "./left-sidebar/LeftSidebar";
 import CustomCarousel from "./carousel/Carousel";
-import CenterContent from "./maincenter-content/CenterContent";
+import CenterContent from "./сenter-content/CenterContent";
 
 
 function Main() {
