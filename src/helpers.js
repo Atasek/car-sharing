@@ -1,4 +1,4 @@
-import {STEPS} from "./components/order-page/step-switcher/StepSwitcher";
+import {STEPS} from "./components/order/step-switcher/StepSwitcher";
 import {withNaming} from "@bem-react/classname";
 
 export function formatPriceNumber(bigNumber) {

@@ -1,8 +1,8 @@
 import React from 'react'
-import AdminPage from "./admin-page/AdminPage";
-import Auth from "./auth/Auth";
+import AdminLayout from "./pages/admin-layout/AdminLayout";
+import Auth from "./pages/auth/Auth";
 import {Redirect, Route, Switch, useRouteMatch} from "react-router-dom";
-import {isAuthorised} from "../../api/common";
+import {isAuthorised} from "../../api/admin/auth";
 
 
 export default function Admin() {
@@ -15,7 +15,7 @@ export default function Admin() {
         </Route>
         {isAuthorised() ?
             <Route path={`${url}`}>
-                <AdminPage/>
+                <AdminLayout/>
             </Route> :
             <Redirect to={`${url}/login`}/>
         }

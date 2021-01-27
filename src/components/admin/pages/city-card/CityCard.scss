@@ -1,0 +1,42 @@
+@import "../../../../styles/colors";
+
+.city-card {
+  position: relative;
+  &__title {
+    font-size: 29px;
+    line-height: 33px;
+    color: $admin-title;
+    font-family: Helvetica;
+    margin: 0 0 29px 0;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 1px 0 rgba(90, 97, 105, 0.11), 0 2px 4px rgba(90, 97, 105, 0.12), 0 5px 5px rgba(90, 97, 105, 0.06), 0 3.5px 35px rgba(90, 97, 105, 0.1);
+    border-radius: 9px;
+    min-height: 386px;
+    padding: 15px;
+  }
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 200px 0;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__save-and-cancel-buttons {
+    display: flex;
+  }
+  &__cancel-button {
+    margin: 0 0 0 12px;
+  }
+  &__field {
+    height: 49px;
+    width: 320px;
+    margin: 0 20px 28px 0;
+  }
+}

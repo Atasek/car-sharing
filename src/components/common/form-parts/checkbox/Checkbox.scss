@@ -1,0 +1,50 @@
+@import '../../../../styles/colors';
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  &__input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    &:checked + .checkbox__label {
+      color: $black;
+    }
+    &:checked + .checkbox__label::before {
+      border: 1px solid $main-accent;
+    }
+    &:checked + .checkbox__label::after {
+      opacity: 1;
+      width: 10px;
+    }
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    color: $gray;
+    &::before {
+      margin: 0 6px 0 0;
+      content: '';
+      display: inline-block;
+      border: 1px solid $gray;
+      height: 12px;
+      width: 12px;
+      cursor: pointer;
+    }
+    &::after {
+      transform-origin: bottom left;
+      transition: all ease-out 300ms;
+      transform: rotate(-45deg);
+      width: 0;
+      content: '';
+      border-left: 2px solid $black;
+      border-bottom: 2px solid $black;
+      position: absolute;
+      left: 8px;
+      height: 4px;
+      opacity: 0;
+    }
+  }
+}

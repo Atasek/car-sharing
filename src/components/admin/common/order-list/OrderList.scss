@@ -1,0 +1,75 @@
+@import '../../../../styles/colors';
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $admin-background;
+  padding: 16px 20px;
+  height: 88px;
+  &__description-wrapper {
+    max-width: 460px;
+    width: 100%;
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+  }
+  &__car-image {
+    width: 138px;
+    height: 63px;
+    margin: 0 16px 0 0;
+  }
+  &__description {
+    color: $admin-gray1;
+  }
+  &__car-name {
+    color: $black;
+  }
+  &__date {
+    margin: 6px 0 5px 0;
+  }
+  &__city {
+    color: $black;
+  }
+  &__color-value {
+    color: $black;
+  }
+  &__additions {
+    font-size: 10px;
+    line-height: 12px;
+  }
+  &__price {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  &__buttons {
+    font-size: 11px;
+    line-height: 13px;
+    font-family: Helvetica;
+    display: flex;
+  }
+  &__button {
+    width: 71.5px;
+    height: 24px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_approve {
+      border: 0.5px solid $admin-gray2;
+      box-sizing: border-box;
+      border-radius: 4px 0px 0px 4px
+    }
+    &_reject {
+      background: #FFFFFF;
+      border: 0.5px solid $admin-gray2;
+      box-sizing: border-box;
+    }
+    &_change {
+      border: 0.5px solid $admin-gray2;
+      box-sizing: border-box;
+      border-radius: 0px 4px 4px 0px;
+    }
+  }
+}
