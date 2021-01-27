@@ -113,6 +113,12 @@ export function OrderFilters({applyFilters}) {
         setStatuses(optionsListByType[2]);
     }
 
+    function handleApplyFiltersClick() {
+        let preparedFilters = {};
+        Object.keys(filters).forEach((filterKey) => preparedFilters[filterKey] = filters[filterKey] && filters[filterKey]["value"]);
+        applyFilters(preparedFilters);
+    }
+
 
     useEffect(() => {
         loadOptions();
@@ -165,11 +171,7 @@ export function OrderFilters({applyFilters}) {
             />
         </div>
         <div>
-            <Button label="Применить" onClick={() => {
-                let preparedFilters = {};
-                Object.keys(filters).forEach((filterKey) => preparedFilters[filterKey] = filters[filterKey] && filters[filterKey]["value"]);
-                return applyFilters(preparedFilters);
-            }}/>
+            <Button label="Применить" onClick={handleApplyFiltersClick}/>
         </div>
     </div>
 }

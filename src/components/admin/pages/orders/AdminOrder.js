@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import {OrderFilters} from "../../common/order-filters/OrderFilters";
 import "./AdminOrder.scss";
 import Paginator from "../../../common/paginator/Paginator";
-import {getOrders} from "../../../../api/admin";
 import {OrderList} from "../../common/order-list/OrderList";
 import {cn} from "../../../../helpers";
+import {getOrders} from "../../../../api/admin/entities/order";
 
 
 export function AdminOrder() {

@@ -12,8 +12,8 @@ import {Input} from "../../../common/form-parts/input/Input";
 import CustomSelect from "../../../common/form-parts/select/Select";
 import {getCarByID, getCategoriesForSelect} from "../../../../api/order";
 import {CheckboxPicker} from "../../../common/form-parts/checkbox-picker/CheckboxPicker";
-import {createCar, deleteCar, updateCar} from "../../../../api/admin";
 import {Alert} from "../../../common/alert/Alert";
+import {createCar, deleteCar, updateCar} from "../../../../api/admin/entities/car";
 
 export const categoriesStyles = {
     container: (styles) => (
@@ -145,14 +145,6 @@ export function CarCard() {
     const [categoryIdOptions, setCategoryIdOptions] = useState(null);
     const [isAlertShown, setIsAlertShown] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
-    const [width, setWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        window.addEventListener('resize', handleWindowSizeChange);
-        return () => {
-            window.removeEventListener('resize', handleWindowSizeChange);
-        }
-    }, []);
 
     useEffect(() => {
         function calculateProgress() {
@@ -262,13 +254,25 @@ export function CarCard() {
         setAlertMessage('✓ Успех! Машина сохранена');
         setIsAlertShown(true);
     }
-
-    function handleWindowSizeChange() {
-        setWidth(window.innerWidth);
+    
+    function setPriceMin(priceMin) {
+        dispatchCar({type: CAR_ACTION_TYPES.PRICE_MIN, payload: priceMin})
     }
 
-    function isMobile() {
-        return width <= 768;
+    function setPriceMax(priceMax) {
+        dispatchCar({type: CAR_ACTION_TYPES.PRICE_MAX, payload: priceMax})
+    }
+
+    function setName(name) {
+        dispatchCar({type: CAR_ACTION_TYPES.NAME, payload: name})
+    }
+
+    function setDescription(description) {
+        dispatchCar({type: CAR_ACTION_TYPES.DESCRIPTION, payload: description})
+    }
+
+    function setCategoryID(categoryID) {
+        dispatchCar({type: CAR_ACTION_TYPES.CATEGORY_ID, payload: categoryID})
     }
 
     return (
@@ -298,7 +302,7 @@ export function CarCard() {
                         <Textarea
                             label="Описание"
                             value={car.description}
-                            onChange={description => dispatchCar({type: CAR_ACTION_TYPES.DESCRIPTION, payload: description})}
+                            onChange={setDescription}
                         />
                     </div>
                 </div>
@@ -309,27 +313,24 @@ export function CarCard() {
                             <div className={carCardCn('field')}>
                                 <Input
                                     label="Модель автомобиля"
-                                    onChange={name => dispatchCar({type: CAR_ACTION_TYPES.NAME, payload: name})}
+                                    onChange={setName}
                                     value={car.name}
-                                    width={isMobile() ? '100%' : "320px"}
                                 />
                             </div>
                             <div className={carCardCn('field')}>
                                 <Input
                                     label="Минимальная стоимость"
-                                    onChange={priceMin => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MIN, payload: priceMin})}
+                                    onChange={setPriceMin}
                                     value={car.priceMin}
                                     type="number"
-                                    width={isMobile() ? '100%' : "320px"}
                                 />
                             </div>
                             <div className={carCardCn('field')}>
                                 <Input
                                     label="Максимальная стоимость"
-                                    onChange={priceMax => dispatchCar({type: CAR_ACTION_TYPES.PRICE_MAX, payload: priceMax})}
+                                    onChange={setPriceMax}
                                     value={car.priceMax}
                                     type="number"
-                                    width={isMobile() ? '100%' : "320px"}
                                 />
                             </div>
                             <div className={carCardCn('field')}>
@@ -337,7 +338,7 @@ export function CarCard() {
                                 <CustomSelect
                                     styles={categoriesStyles}
                                     placeholder="Тип автомобиля"
-                                    onChange={categoryId => dispatchCar({type: CAR_ACTION_TYPES.CATEGORY_ID, payload: categoryId})}
+                                    onChange={setCategoryID}
                                     value={car.categoryId}
                                     isDisabled={!categoryIdOptions}
                                     options={categoryIdOptions}

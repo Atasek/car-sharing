@@ -1,11 +1,11 @@
 import {cn} from "../../../../helpers";
 import React, {useEffect, useState} from "react";
-import {getCities} from "../../../../api/admin";
 import Paginator from "../../../common/paginator/Paginator";
 import "./Cities.scss";
 import {CityList} from "../../common/city-list/CityList";
 import {Button} from "../../../common/button/Button";
 import {Link} from "react-router-dom";
+import {getCities} from "../../../../api/admin/entities/city";
 
 export function Cities() {
     const citiesCn = cn('cities');

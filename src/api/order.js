@@ -1,4 +1,10 @@
-import {BASE_HEADERS, BASE_URL} from "./common";
+import {BASE_URL} from "./common";
+
+export const BASE_HEADERS = {
+    'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',
+    Authorization: 'Secret: 4cbcea96de',
+    'Content-Type': 'application/json;charset=UTF-8',
+};
 
 export async function getCars() {
     const url = `${BASE_URL}car`;
@@ -113,7 +119,7 @@ export async function getDistributionPointsForSelect() {
     return responseDistributionPoints.data.map((distributionPoint) => ({
         value: distributionPoint.id,
         label: distributionPoint.name,
-        cityId: distributionPoint.cityId.id,
+        cityId: distributionPoint.cityId?.id,
         address: distributionPoint.address,
     }));
 }

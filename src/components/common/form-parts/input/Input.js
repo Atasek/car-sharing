@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.scss"
 
-export function Input({value, onChange, label, type = "text", width = '341px'}) {
+export function Input({value, onChange, label, type = "text"}) {
     return <div className="admin-custom-input">
         <label
             className="admin-custom-input__label"
@@ -11,7 +11,6 @@ export function Input({value, onChange, label, type = "text", width = '341px'}) 
         <input
             className="admin-custom-input__input"
             value={value}
-            style={{width}}
             onChange={(event) => onChange(event.target.value)}
             id={label}
             type={type}/>

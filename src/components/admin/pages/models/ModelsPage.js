@@ -4,7 +4,7 @@ import {cn} from "../../../../helpers";
 import {ModelFilters} from "../../common/model-filters/ModelFilters";
 import "./ModelsPage.scss";
 import {ModelList} from "../../common/model-list/ModelList";
-import {getCars} from "../../../../api/admin";
+import {getCars} from "../../../../api/admin/entities/car";
 
 
 export function ModelsPage() {

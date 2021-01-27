@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import "./Auth.scss"
 import {ReactComponent as LogoIcon} from "../../../../img/LogoIcon.svg";
-import {auth} from "../../../../api/admin";
 import {Input} from "../../../common/form-parts/input/Input";
 import { useHistory } from "react-router-dom";
 import {Button} from "../../../common/button/Button";
-import {saveAuthorization} from "../../../../api/common";
 import {cn} from "../../../../helpers";
+import {auth, saveAuthorization} from "../../../../api/admin/auth";
 
 export default function Auth() {
     const authCn = cn('auth');

@@ -3,10 +3,10 @@ import {cn} from "../../../../helpers";
 import React, {useEffect, useState} from "react";
 import {useHistory, useParams} from "react-router-dom";
 import {getCityByID} from "../../../../api/order";
-import {createCity, deleteCity, updateCity} from "../../../../api/admin";
 import {Alert} from "../../../common/alert/Alert";
 import {Input} from "../../../common/form-parts/input/Input";
 import {Button} from "../../../common/button/Button";
+import {createCity, deleteCity, updateCity} from "../../../../api/admin/entities/city";
 
 export function CityCard() {
     const cityCardCn = cn('city-card');
