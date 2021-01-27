@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './components/mainPageComponents/Main';
+import Main from './components/main/Main';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/fonts.scss';
-import Order from "./components/order-page/Order";
+import Order from "./components/order/Order";
 import Admin from "./components/admin/Admin";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 

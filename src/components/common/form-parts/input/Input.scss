@@ -1,0 +1,20 @@
+@import '../../../../styles/colors';
+
+.admin-custom-input{
+  &__input {
+    width: 341.5px;
+    height: 29px;
+    border: 0.5px solid $admin-gray2;
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+  &__label {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #495057;
+    align-self: start;
+    margin-bottom: 8px;
+  }
+}
