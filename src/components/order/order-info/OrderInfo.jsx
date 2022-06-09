@@ -3,18 +3,18 @@ import {STEPS} from "../step-switcher/StepSwitcher";
 import OrderInfoButton from "../components/order-info-button/OrderInfoButton";
 import './OrderInfo.scss';
 import {getDurationOfLease, getPrice} from "../../../helpers";
-import {OrderInfoRow} from "./order-info-row/OrderInfoRow";
+import OrderInfoRow from "./order-info-row/OrderInfoRow";
 export default function OrderInfo(props) {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const ADDITIONAL_SERVICES = [{
         title: 'Полный бак',
-        value: props.order.isFullTank,
+        value: props.order?.isFullTank,
     },{
         title: 'Детское кресло',
-        value: props.order.isNeedChildChair,
+        value: props.order?.isNeedChildChair,
     },{
         title: 'Правый руль',
-        value: props.order.isRightWheel,
+        value: props.order?.isRightWheel,
     },];
 
     function changeStep() {
@@ -40,13 +40,13 @@ export default function OrderInfo(props) {
         let isDisabled;
         switch (step) {
             case STEPS.LOCATION:
-                isDisabled = !props.order.city || !props.order.distributionPoint;
+                isDisabled = !props.order?.city || !props.order?.distributionPoint;
                 break;
             case STEPS.MODEL:
-                isDisabled = !props.order.car;
+                isDisabled = !props.order?.car;
                 break;
             case STEPS.ADDITION:
-                isDisabled = !props.order.color || !props.order.dateFrom || !props.order.dateTo || !props.order.rate;
+                isDisabled = !props.order?.color || !props.order?.dateFrom || !props.order?.dateTo || !props.order?.rate;
                 break;
             default:
                 isDisabled = false;
@@ -57,11 +57,11 @@ export default function OrderInfo(props) {
 
     return <div className='order-info'>
         <span className='order-info__main-title'>Ваш заказ:</span>
-        {props.order.city && props.order.distributionPoint && <OrderInfoRow title="Пункт выдачи" value={`${props.order.city.label}, ${props.order.distributionPoint.address}`}/>}
-        {props.order.car && <OrderInfoRow title="Модель" value={props.order.car.name}/>}
-        {props.order.color && <OrderInfoRow title="Цвет" value={props.order.color}/>}
-        {props.order.dateFrom && props.order.dateTo && <OrderInfoRow title="Длительность аренды" value={`${getDurationOfLease(props.order.dateTo, props.order.dateFrom)} д`}/>}
-        {props.order.rate && <OrderInfoRow title="Тариф" value={props.order.rate.rateTypeId.name}/>}
+        {props.order && props.order.city && props.order.distributionPoint && <OrderInfoRow title="Пункт выдачи" value={`${props.order.city.label}, ${props.order.distributionPoint.address}`}/>}
+        {props.order && props.order.car && <OrderInfoRow title="Модель" value={props.order.car.name}/>}
+        {props.order && props.order.color && <OrderInfoRow title="Цвет" value={props.order.color}/>}
+        {props.order && props.order.dateFrom && props.order.dateTo && <OrderInfoRow title="Длительность аренды" value={`${getDurationOfLease(props.order.dateTo, props.order.dateFrom)} д`}/>}
+        {props.order && props.order.rate && <OrderInfoRow title="Тариф" value={props.order.rate.rateTypeId.name}/>}}
         {ADDITIONAL_SERVICES.filter(addition => addition.value).map(addition => <OrderInfoRow key={addition.title} title={addition.title} value="Да"/>)}
         <div className="order-info__price"><span className="order-info__price-title">Цена: </span><span>{getPrice(props.order, props.isOrderConfirmed ? STEPS.SUMMARY : step)} ₽</span></div>
         <OrderInfoButton

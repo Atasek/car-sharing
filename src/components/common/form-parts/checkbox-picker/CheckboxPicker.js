@@ -31,7 +31,7 @@ export function CheckboxPicker({values, onAdd, onRemove, label, width = '341px',
                 />
                 <button className={pickerCn('plus-button')} onClick={addValue}/>
             </div>
-            {values.map(value =>
+            {values?.map(value =>
                 <CustomCheckbox
                     key={value}
                     value={value}

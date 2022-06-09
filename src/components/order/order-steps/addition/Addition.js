@@ -105,7 +105,7 @@ export default function Addition(props) {
                     {rates.map(currentRate => <div className="addition__row" key={currentRate.id}>
                         <RadioInput
                             checked={rate && rate.id === currentRate.id}
-                            value={`${currentRate.rateTypeId.name}, ${currentRate.price} ₽/${currentRate.rateTypeId.unit}`}
+                            value={`${currentRate.price} ₽/`}
                             onChange={() => {
                                 setRate(currentRate);
                                 props.changeOrder({color, rate: currentRate, startDate: dateFrom, endDate: dateTo, isFullTank, isRightWheel, isNeedChildChair });

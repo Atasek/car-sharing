@@ -9,7 +9,7 @@ import {getOrderByID, getOrderStatus, saveOrder} from "../../api/order";
 import {convertPriceNumber, getPrice} from "../../helpers";
 import { useHistory, useParams } from "react-router-dom";
 
-export default function Order(props) {
+export default function Order() {
     const [step, nextStep] = useState(STEPS.LOCATION);
     const [order, setOrder] = useState({});
     const [isModalShown, setModalShown] = useState(false);

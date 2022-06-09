@@ -1,4 +1,6 @@
+import React from "react";
 import "./Checkbox.scss";
+
 
 export default function CustomCheckbox({value, onChange, label, checked}) {
     return <div key={label} className="checkbox">

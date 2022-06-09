@@ -1,3 +1,4 @@
+import React from "react";
 import "./Textarea.scss";
 import {cn} from "../../../../helpers";
 

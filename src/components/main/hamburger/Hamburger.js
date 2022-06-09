@@ -6,7 +6,6 @@ import './Hamburger.scss'
 
 class Hamburger extends React.Component {
     render() {
-
         return <div className="menu">
             <input id="menu__toggle" type="checkbox"/>
             <label className="menu__btn" htmlFor="menu__toggle">
@@ -27,7 +26,6 @@ class Hamburger extends React.Component {
                 </a></li>
             </ul>
             <div className="menu__carousel-background"/>
-
         </div>
     }
 }

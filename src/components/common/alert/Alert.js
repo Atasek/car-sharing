@@ -1,3 +1,4 @@
+import React from "react";
 import "./Alert.scss";
 import {cn} from "../../../helpers";
 
