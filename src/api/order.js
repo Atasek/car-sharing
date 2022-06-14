@@ -1,6 +1,6 @@
 import {BASE_URL} from "./common";
-jest.mock('node-fetch');
-import fetch from 'node-fetch';
+/*jest.mock('node-fetch');
+import fetch from 'node-fetch';*/
 
 export const BASE_HEADERS = {
     'X-Api-Factory-Application-Id': '5e25c641099b810b946c5d5b',

@@ -4,7 +4,7 @@ import "./OrderInfoButton.scss";
 
 export default function OrderInfoButton(props) {
 
-    function getTitle(props) {
+     function getTitle(props) {
         if (props.isOrderConfirmed) {
             return 'Отменить';
         } else {
